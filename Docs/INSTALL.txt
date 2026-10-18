@@ -1,0 +1,18 @@
+Miracle 0.3.0 — Local test build
+
+1. Use the AppleSilicon installer on an M-series Mac. Intel Macs are not supported. macOS 13 or newer is required.
+2. Open the DMG and drag Miracle into Applications.
+3. Open Miracle from Applications. It stays running in the menu bar after its windows close. Later launches do not open the welcome window automatically.
+4. In Miracle Settings → General, choose “Allow Finder selection…” and approve Finder access in the macOS Automation prompt.
+5. Click a file in Finder, then tap Shift. The wheel shows conversion targets. Click an option to convert. Escape dismisses it. Drag + Shift/Command/Control also remains available.
+6. Enable “Open Miracle at login” in Settings if you want it to start after signing into your Mac.
+
+All conversion engines are bundled; no Homebrew or Python installation is needed. Converters run offline with outbound IP network access blocked. Originals are preserved unless you explicitly confirm a Move action.
+
+IMPORTANT: This is an ad-hoc signed test build, without Developer ID notarization. macOS may prevent a downloaded copy from opening. A public release requires Developer ID signing and notarization. Do not disable macOS security protections to install it.
+
+Native Pages export requires Apple's Pages app to be installed. Legacy text clippings that cannot be read should be pasted into a TXT file before converting. PDF exports include all pages. JPG/PNG page exports use 300 DPI; oversized pages fail with an explanation rather than silently reducing resolution. PDF-to-DOCX uses reflowed/OCR text; PDF-to-XLSX uses Page and Text columns; PDF-to-PPTX imports one slide per page. Complex layouts may change. CSV/TSV exports use the first spreadsheet sheet. GZIP output is a compressed TAR (.tar.gz). Expanded archive data is limited to 4 GB, and unsafe paths/links are rejected.
+
+Third-party engines include FFmpeg (GPL build) and LibreOffice (MPL and bundled component licenses). This test image is for evaluation. Review the bundled third-party notices and corresponding-source obligations before a public release.
+
+Completion windows return to normal window level and dismiss after four seconds. Done, Open and Reveal also dismiss the result. Use the menu bar’s Last Result to reopen it. The DMG download is below 270 MB; the installed app is larger because offline engines expand on disk.

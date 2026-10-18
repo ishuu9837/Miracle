@@ -1,0 +1,231 @@
+category,input,output,implementation,verification,conditions
+image,jpg,png,Registered,Not individually verified,
+image,jpg,webp,Registered,Not individually verified,
+image,jpg,heic,Registered,Not individually verified,
+image,jpg,tiff,Registered,Not individually verified,
+image,jpg,avif,Registered,Not individually verified,
+image,jpg,pdf,Registered,Not individually verified,
+image,png,jpg,Registered,Not individually verified,
+image,png,webp,Registered,Not individually verified,
+image,png,heic,Registered,Not individually verified,
+image,png,tiff,Registered,Not individually verified,
+image,png,avif,Registered,Not individually verified,
+image,png,pdf,Registered,Not individually verified,
+image,webp,jpg,Registered,Not individually verified,
+image,webp,png,Registered,Not individually verified,
+image,webp,heic,Registered,Not individually verified,
+image,webp,tiff,Registered,Not individually verified,
+image,webp,avif,Registered,Not individually verified,
+image,webp,pdf,Registered,Not individually verified,
+image,heic,jpg,Registered,Not individually verified,
+image,heic,png,Registered,Not individually verified,
+image,heic,webp,Registered,Not individually verified,
+image,heic,tiff,Registered,Not individually verified,
+image,heic,avif,Registered,Not individually verified,
+image,heic,pdf,Registered,Not individually verified,
+image,tiff,jpg,Registered,Not individually verified,
+image,tiff,png,Registered,Not individually verified,
+image,tiff,webp,Registered,Not individually verified,
+image,tiff,heic,Registered,Not individually verified,
+image,tiff,avif,Registered,Not individually verified,
+image,tiff,pdf,Registered,Not individually verified,
+image,avif,jpg,Registered,Not individually verified,
+image,avif,png,Registered,Not individually verified,
+image,avif,webp,Registered,Not individually verified,
+image,avif,heic,Registered,Not individually verified,
+image,avif,tiff,Registered,Not individually verified,
+image,avif,pdf,Registered,Not individually verified,
+image,svg,jpg,Registered,Not individually verified,
+image,svg,png,Registered,Not individually verified,
+image,svg,webp,Registered,Not individually verified,
+image,svg,heic,Registered,Not individually verified,
+image,svg,tiff,Registered,Not individually verified,
+image,svg,avif,Registered,Not individually verified,
+image,svg,pdf,Registered,Not individually verified,
+image,bmp,jpg,Registered,Not individually verified,
+image,bmp,png,Registered,Not individually verified,
+image,bmp,webp,Registered,Not individually verified,
+image,bmp,heic,Registered,Not individually verified,
+image,bmp,tiff,Registered,Not individually verified,
+image,bmp,avif,Registered,Not individually verified,
+image,bmp,pdf,Registered,Not individually verified,
+audio,mp3,m4a,Registered,Not individually verified,
+audio,mp3,wav,Registered,Not individually verified,
+audio,mp3,flac,Registered,Not individually verified,
+audio,mp3,ogg,Registered,Not individually verified,
+audio,mp3,opus,Registered,Not individually verified,
+audio,mp3,aiff,Registered,Not individually verified,
+audio,m4a,mp3,Registered,Not individually verified,
+audio,m4a,wav,Registered,Not individually verified,
+audio,m4a,flac,Registered,Not individually verified,
+audio,m4a,ogg,Registered,Not individually verified,
+audio,m4a,opus,Registered,Not individually verified,
+audio,m4a,aiff,Registered,Not individually verified,
+audio,wav,mp3,Registered,Not individually verified,
+audio,wav,m4a,Registered,Not individually verified,
+audio,wav,flac,Registered,Not individually verified,
+audio,wav,ogg,Registered,Not individually verified,
+audio,wav,opus,Registered,Not individually verified,
+audio,wav,aiff,Registered,Not individually verified,
+audio,flac,mp3,Registered,Not individually verified,
+audio,flac,m4a,Registered,Not individually verified,
+audio,flac,wav,Registered,Not individually verified,
+audio,flac,ogg,Registered,Not individually verified,
+audio,flac,opus,Registered,Not individually verified,
+audio,flac,aiff,Registered,Not individually verified,
+audio,ogg,mp3,Registered,Not individually verified,
+audio,ogg,m4a,Registered,Not individually verified,
+audio,ogg,wav,Registered,Not individually verified,
+audio,ogg,flac,Registered,Not individually verified,
+audio,ogg,opus,Registered,Not individually verified,
+audio,ogg,aiff,Registered,Not individually verified,
+audio,opus,mp3,Registered,Not individually verified,
+audio,opus,m4a,Registered,Not individually verified,
+audio,opus,wav,Registered,Not individually verified,
+audio,opus,flac,Registered,Not individually verified,
+audio,opus,ogg,Registered,Not individually verified,
+audio,opus,aiff,Registered,Not individually verified,
+audio,aiff,mp3,Registered,Not individually verified,
+audio,aiff,m4a,Registered,Not individually verified,
+audio,aiff,wav,Registered,Not individually verified,
+audio,aiff,flac,Registered,Not individually verified,
+audio,aiff,ogg,Registered,Not individually verified,
+audio,aiff,opus,Registered,Not individually verified,
+audio,wma,mp3,Registered,Not individually verified,
+audio,wma,m4a,Registered,Not individually verified,
+audio,wma,wav,Registered,Not individually verified,
+audio,wma,flac,Registered,Not individually verified,
+audio,wma,ogg,Registered,Not individually verified,
+audio,wma,opus,Registered,Not individually verified,
+audio,wma,aiff,Registered,Not individually verified,
+video,mp4,mov,Registered,Not individually verified,
+video,mp4,mkv,Registered,Not individually verified,
+video,mp4,webm,Registered,Not individually verified,
+video,mp4,gif,Registered,Not individually verified,
+video,mp4,mp3,Registered,Not individually verified,
+video,mov,mp4,Registered,Not individually verified,
+video,mov,mkv,Registered,Not individually verified,
+video,mov,webm,Registered,Not individually verified,
+video,mov,gif,Registered,Not individually verified,
+video,mov,mp3,Registered,Not individually verified,
+video,mkv,mp4,Registered,Not individually verified,
+video,mkv,mov,Registered,Not individually verified,
+video,mkv,webm,Registered,Not individually verified,
+video,mkv,gif,Registered,Not individually verified,
+video,mkv,mp3,Registered,Not individually verified,
+video,webm,mp4,Registered,Not individually verified,
+video,webm,mov,Registered,Not individually verified,
+video,webm,mkv,Registered,Not individually verified,
+video,webm,gif,Registered,Not individually verified,
+video,webm,mp3,Registered,Not individually verified,
+video,gif,mp4,Registered,Not individually verified,
+video,gif,mov,Registered,Not individually verified,
+video,gif,mkv,Registered,Not individually verified,
+video,gif,webm,Registered,Not individually verified,
+video,gif,mp3,Registered,Not individually verified,Unavailable: GIF has no audio track
+video,avi,mp4,Registered,Not individually verified,
+video,avi,mov,Registered,Not individually verified,
+video,avi,mkv,Registered,Not individually verified,
+video,avi,webm,Registered,Not individually verified,
+video,avi,gif,Registered,Not individually verified,
+video,avi,mp3,Registered,Not individually verified,
+video,wmv,mp4,Registered,Not individually verified,
+video,wmv,mov,Registered,Not individually verified,
+video,wmv,mkv,Registered,Not individually verified,
+video,wmv,webm,Registered,Not individually verified,
+video,wmv,gif,Registered,Not individually verified,
+video,wmv,mp3,Registered,Not individually verified,
+pdf,pdf,docx,Registered,Not individually verified,Text reflow; OCR when page has no text
+pdf,pdf,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text reflow; OCR when page has no text
+pdf,pdf,pptx,Registered,Not individually verified,
+pdf,pdf,xlsx,Registered,Not individually verified,Page/Text columns; no table reconstruction
+pdf,pdf,jpg,Registered,Not individually verified,All pages at 300 DPI
+pdf,pdf,png,Registered,Not individually verified,All pages at 300 DPI
+pdf,pdf,epub,Registered,Not individually verified,Text reflow; OCR when page has no text
+pdf,pdf,txt,Registered,Not individually verified,Text reflow; OCR when page has no text
+pdf,pdf,md,Registered,Not individually verified,Text reflow; OCR when page has no text
+document,docx,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text-first; complex layout/media may change
+document,docx,md,Registered,Not individually verified,Text-first; complex layout/media may change
+document,docx,txt,Registered,Not individually verified,Text-first; complex layout/media may change
+document,docx,epub,Registered,Not individually verified,Text-first; complex layout/media may change
+document,docx,html,Registered,Not individually verified,Text-first; complex layout/media may change
+document,docx,pdf,Registered,Not individually verified,Text-first; complex layout/media may change
+document,pages,docx,Registered,Not individually verified,Text-first; complex layout/media may change
+document,pages,md,Registered,Not individually verified,Text-first; complex layout/media may change
+document,pages,txt,Registered,Not individually verified,Text-first; complex layout/media may change
+document,pages,epub,Registered,Not individually verified,Text-first; complex layout/media may change
+document,pages,html,Registered,Not individually verified,Text-first; complex layout/media may change
+document,pages,pdf,Registered,Not individually verified,Text-first; complex layout/media may change
+document,md,docx,Registered,Not individually verified,Text-first; complex layout/media may change
+document,md,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text-first; complex layout/media may change
+document,md,txt,Registered,Not individually verified,Text-first; complex layout/media may change
+document,md,epub,Registered,Not individually verified,Text-first; complex layout/media may change
+document,md,html,Registered,Not individually verified,Text-first; complex layout/media may change
+document,txt,docx,Registered,Not individually verified,Text-first; complex layout/media may change
+document,txt,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text-first; complex layout/media may change
+document,txt,md,Registered,Not individually verified,Text-first; complex layout/media may change
+document,txt,epub,Registered,Not individually verified,Text-first; complex layout/media may change
+document,txt,html,Registered,Not individually verified,Text-first; complex layout/media may change
+document,epub,docx,Registered,Not individually verified,Text-first; complex layout/media may change
+document,epub,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text-first; complex layout/media may change
+document,epub,md,Registered,Not individually verified,Text-first; complex layout/media may change
+document,epub,txt,Registered,Not individually verified,Text-first; complex layout/media may change
+document,epub,html,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtf,docx,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtf,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text-first; complex layout/media may change
+document,rtf,md,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtf,txt,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtf,epub,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtf,html,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtfd,docx,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtfd,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text-first; complex layout/media may change
+document,rtfd,md,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtfd,txt,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtfd,epub,Registered,Not individually verified,Text-first; complex layout/media may change
+document,rtfd,html,Registered,Not individually verified,Text-first; complex layout/media may change
+document,textclipping,docx,Registered,Not individually verified,Text-first; complex layout/media may change; Supported UTI-Data plist clippings; legacy resource-fork clippings may require TXT export
+document,textclipping,pages,Registered,Not individually verified,Requires installed Apple Pages and Automation permission; Text-first; complex layout/media may change; Supported UTI-Data plist clippings; legacy resource-fork clippings may require TXT export
+document,textclipping,md,Registered,Not individually verified,Text-first; complex layout/media may change; Supported UTI-Data plist clippings; legacy resource-fork clippings may require TXT export
+document,textclipping,txt,Registered,Not individually verified,Text-first; complex layout/media may change; Supported UTI-Data plist clippings; legacy resource-fork clippings may require TXT export
+document,textclipping,epub,Registered,Not individually verified,Text-first; complex layout/media may change; Supported UTI-Data plist clippings; legacy resource-fork clippings may require TXT export
+document,textclipping,html,Registered,Not individually verified,Text-first; complex layout/media may change; Supported UTI-Data plist clippings; legacy resource-fork clippings may require TXT export
+slides,ppt,pdf,Registered,Not individually verified,
+slides,ppt,jpg,Registered,Not individually verified,All pages at 300 DPI
+slides,ppt,png,Registered,Not individually verified,All pages at 300 DPI
+slides,pptx,pdf,Registered,Not individually verified,
+slides,pptx,jpg,Registered,Not individually verified,All pages at 300 DPI
+slides,pptx,png,Registered,Not individually verified,All pages at 300 DPI
+spreadsheet,xlsx,ods,Registered,Not individually verified,
+spreadsheet,xlsx,csv,Registered,Not individually verified,
+spreadsheet,xlsx,tsv,Registered,Not individually verified,
+spreadsheet,xlsx,pdf,Registered,Not individually verified,
+spreadsheet,ods,xlsx,Registered,Not individually verified,
+spreadsheet,ods,csv,Registered,Not individually verified,
+spreadsheet,ods,tsv,Registered,Not individually verified,
+spreadsheet,ods,pdf,Registered,Not individually verified,
+spreadsheet,csv,xlsx,Registered,Not individually verified,
+spreadsheet,csv,ods,Registered,Not individually verified,
+spreadsheet,csv,tsv,Registered,Not individually verified,
+spreadsheet,csv,pdf,Registered,Not individually verified,
+spreadsheet,tsv,xlsx,Registered,Not individually verified,
+spreadsheet,tsv,ods,Registered,Not individually verified,
+spreadsheet,tsv,csv,Registered,Not individually verified,
+spreadsheet,tsv,pdf,Registered,Not individually verified,
+spreadsheet,xls,xlsx,Registered,Not individually verified,
+spreadsheet,xls,ods,Registered,Not individually verified,
+spreadsheet,xls,csv,Registered,Not individually verified,
+spreadsheet,xls,tsv,Registered,Not individually verified,
+spreadsheet,xls,pdf,Registered,Not individually verified,
+subtitle,srt,vtt,Registered,Not individually verified,
+subtitle,srt,txt,Registered,Not individually verified,
+subtitle,vtt,srt,Registered,Not individually verified,
+subtitle,vtt,txt,Registered,Not individually verified,
+archive,zip,tar,Registered,Not individually verified,
+archive,zip,gz,Registered,Not individually verified,Produces .tar.gz
+archive,tar,zip,Registered,Not individually verified,
+archive,tar,gz,Registered,Not individually verified,Produces .tar.gz
+archive,gz,zip,Registered,Not individually verified,
+archive,gz,tar,Registered,Not individually verified,
+archive,rar,zip,Registered,Not individually verified,
+archive,rar,tar,Registered,Not individually verified,
+archive,rar,gz,Registered,Not individually verified,Produces .tar.gz

@@ -1,0 +1,26 @@
+.build/
+.DS_Store
+/output/
+.swiftpm/
+
+xcuserdata/
+*.xcuserstate
+
+/Resources/Engines/
+
+# Private product reference supplied during development
+Docs/SOURCE_REQUIREMENTS.txt
+
+# Local credentials and generated deliverables
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.mobileprovision
+*.dmg
+*.xcresult
+
+# Python contributor-tool caches
+__pycache__/
+*.py[cod]
