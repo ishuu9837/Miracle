@@ -68,3 +68,7 @@ Scripts/build-dmg.sh
 </p>
 
 <img src="assets/readme/footer-signature.svg" width="100%" alt="Miracle✨ — Native Apple Silicon file conversion. Built to stay on your Mac.">
+
+## Download website
+
+The landing page and interactive demo live in [`website/`](website/). Import this repository into Vercel with Root Directory `./` and framework preset **Other**; the root [`vercel.json`](vercel.json) serves `website/` without a build step. See [website deployment instructions](website/README.md).
