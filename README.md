@@ -72,3 +72,7 @@ Scripts/build-dmg.sh
 ## Download website
 
 The landing page and interactive demo live in [`website/`](website/). Import this repository into Vercel with Root Directory `./` and framework preset **Other**; the root [`vercel.json`](vercel.json) serves `website/` without a build step. See [website deployment instructions](website/README.md).
+
+## Windows preview
+
+An early native WPF/.NET 10 Windows port is available in [`Windows/`](Windows/README.md). It has a tray app, conversion wheel, native image/subtitle routes and optional FFmpeg integration. It does not yet match the macOS conversion catalog. See the Windows README for prerequisites, limitations and portable-build instructions.

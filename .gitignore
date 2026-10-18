@@ -24,3 +24,8 @@ Docs/SOURCE_REQUIREMENTS.txt
 # Python contributor-tool caches
 __pycache__/
 *.py[cod]
+
+# Windows / .NET build output
+Windows/**/bin/
+Windows/**/obj/
+Windows/artifacts/
