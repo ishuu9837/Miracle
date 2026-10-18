@@ -1,4 +1,4 @@
-# Miracle for Windows — initial preview
+# Miracle for Windows — 0.2 preview
 
 Native C# / WPF port, targeting .NET 10 on Windows 11. This is a separate early implementation: the Mac's full conversion catalog and file actions have not yet been ported.
 
@@ -6,7 +6,7 @@ Native C# / WPF port, targeting .NET 10 on Windows 11. This is a separate early 
 
 Extract the **entire** ARM64 ZIP in Windows and open `Miracle.exe`. It includes the .NET runtime, so no SDK or runtime installation is needed to run it. Apple Silicon Macs running Windows 11 in Parallels use the **win-arm64** build. Do not copy only the EXE: its companion files are required. This preview is unsigned.
 
-Select files or drop them onto the main window, choose an output format, or open the wheel. Closing the main window keeps Miracle in the tray. Use the tray menu to quit. Optional Shift-tap integration can be enabled in the main window; it reads the selection from a foreground File Explorer window. Desktop selections and automatic login startup are not implemented. Preferences, including the optional shortcut and a manually selected engine path, are session-only for now.
+The primary workflow is **01 Add files → 02 pick a colorful output tile → Convert**. **03 Not sure? Use the wheel** is an optional alternative. The halftone logo theme includes an animated logo intro, with Skip and system reduced-animation support. Closing the main window keeps Miracle in the tray. Use the tray menu to quit. Optional Shift-tap integration can be enabled in the main window; it reads the selection from a foreground File Explorer window. Desktop selections and automatic login startup are not implemented. Preferences, including the optional shortcut and a manually selected engine path, are session-only for now.
 
 ## Current conversion scope
 
@@ -45,3 +45,9 @@ if ($p.ExitCode -ne 0) { throw 'Self-test failed' }
 ```
 
 Use a dedicated test directory. The report checks native image decoding/encoding, subtitle round-trips, output collisions, cancellation, original preservation, mixed selections, and temporary output cleanup. FFmpeg and Explorer integration require separate manual testing on Windows.
+
+## Reliability and security checks
+
+This build treats compiler warnings as errors and includes executable Windows checks for the primary UI workflow, wheel commitment/close events, malformed and empty inputs, output path validation, command argument isolation, child-process error handling/cancellation, bounded stdout/stderr drains, original preservation and atomic output naming. Subtitle input is limited to 8 MB; native image input to 256 MB, 100 frames and an 80-megapixel decoded budget. FFmpeg input protocols are restricted to `file,pipe`. Subtitle markup stripping uses a non-backtracking matcher with a timeout. The application requests standard-user privileges (`asInvoker`), not elevation.
+
+See [SECURITY.md](SECURITY.md) for the verification scope. Engine and Windows codec security still depend on their installed versions.

@@ -40,7 +40,7 @@ public sealed class ConversionService
         }
         foreach (string candidate in candidates.Distinct(StringComparer.OrdinalIgnoreCase))
         {
-            if (!File.Exists(candidate)) continue;
+            if (!Path.IsPathFullyQualified(candidate) || !File.Exists(candidate)) continue;
             try
             {
                 using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(8));
@@ -82,7 +82,10 @@ public sealed class ConversionService
     public async Task<string> ConvertAsync(string input, string format, string? directory, CancellationToken token)
     {
         if (!Outputs(input).Contains(format)) throw new InvalidOperationException("This conversion is not available with the detected engines.");
-        string folder = directory ?? Path.GetDirectoryName(Path.GetFullPath(input))!;
+        input = Path.GetFullPath(input);
+        if (!File.Exists(input)) throw new FileNotFoundException("The source file no longer exists.", input);
+        if (new FileInfo(input).Length == 0) throw new InvalidDataException("The source file is empty.");
+        string folder = Path.GetFullPath(directory ?? Path.GetDirectoryName(input)!);
         Directory.CreateDirectory(folder);
         string temporary = Path.Combine(folder, ".miracle-" + Guid.NewGuid().ToString("N") + "." + format);
         try
@@ -111,7 +114,11 @@ public sealed class ConversionService
     private static void ConvertImage(string input, string output, string format)
     {
         using var source = File.OpenRead(input);
-        var decoder = BitmapDecoder.Create(source, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+        if (source.Length > 256L * 1024 * 1024) throw new InvalidDataException("Image input exceeds the 256 MB limit.");
+        var decoder = BitmapDecoder.Create(source, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnDemand);
+        if (decoder.Frames.Count > 100) throw new InvalidDataException("Image has more than 100 frames.");
+        long pixels = 0;
+        foreach (var frame in format == "tiff" ? decoder.Frames : decoder.Frames.Take(1)) { pixels = checked(pixels + (long)frame.PixelWidth * frame.PixelHeight); if (pixels > 80_000_000) throw new InvalidDataException("Image exceeds the 80 megapixel processing limit."); }
         BitmapEncoder encoder = format switch { "jpg" => new JpegBitmapEncoder { QualityLevel = 92 }, "png" => new PngBitmapEncoder(), "bmp" => new BmpBitmapEncoder(), "tiff" => new TiffBitmapEncoder { Compression = TiffCompressOption.Zip }, _ => throw new InvalidOperationException("Unknown image format.") };
         foreach (var frame in format == "tiff" ? decoder.Frames : decoder.Frames.Take(1)) encoder.Frames.Add(BitmapFrame.Create(frame));
         using var target = File.Create(output);
@@ -127,7 +134,7 @@ public sealed class ConversionService
     private async Task ConvertMediaAsync(string input, string output, string format, bool image, CancellationToken token)
     {
         if (FFmpegPath == null) throw new InvalidOperationException("Choose ffmpeg.exe first.");
-        var args = new List<string> { "-hide_banner", "-loglevel", "error", "-nostdin", "-n", "-i", input };
+        var args = new List<string> { "-hide_banner", "-loglevel", "error", "-nostdin", "-n", "-protocol_whitelist", "file,pipe", "-i", input };
         if (image) { args.AddRange(new[] { "-frames:v", "1" }); if (format == "webp") args.AddRange(new[] { "-c:v", "libwebp" }); }
         else if (format is "mp3" or "m4a" or "wav" or "flac" or "ogg" or "opus" or "aiff") args.AddRange(new[] { "-vn", "-c:a", codecs[format] });
         else if (format == "gif") args.AddRange(new[] { "-an", "-vf", "fps=15,scale=960:-1:force_original_aspect_ratio=decrease" });
@@ -139,6 +146,8 @@ public sealed class ConversionService
     }
     internal static async Task<string> RunAsync(string executable, IEnumerable<string> args, CancellationToken token)
     {
+        token.ThrowIfCancellationRequested();
+        if (!Path.IsPathFullyQualified(executable)) throw new InvalidOperationException("Engine path must be absolute.");
         var start = new ProcessStartInfo(executable) { UseShellExecute = false, CreateNoWindow = true, RedirectStandardOutput = true, RedirectStandardError = true };
         foreach (string arg in args) start.ArgumentList.Add(arg);
         using var process = Process.Start(start) ?? throw new IOException("Could not start the conversion engine.");
@@ -159,6 +168,7 @@ public sealed class ConversionService
     }
     private static async Task ConvertSubtitleAsync(string input, string output, string format, CancellationToken token)
     {
+        if (new FileInfo(input).Length > 8L * 1024 * 1024) throw new InvalidDataException("Subtitle input exceeds the 8 MB limit.");
         string text = (await File.ReadAllTextAsync(input, token)).Replace("\r\n", "\n").TrimStart('\uFEFF');
         var blocks = Regex.Split(text.Trim(), @"\n\s*\n");
         var cues = new List<(string Time, string Body)>();
@@ -174,7 +184,7 @@ public sealed class ConversionService
         if (cues.Count == 0) throw new InvalidDataException("No valid subtitle cues were found.");
         string result = format switch
         {
-            "txt" => string.Join("\n\n", cues.Select(c => Regex.Replace(c.Body, "<[^>]+>", ""))),
+            "txt" => string.Join("\n\n", cues.Select(c => Regex.Replace(c.Body, "<[^>]+>", "", RegexOptions.NonBacktracking, TimeSpan.FromSeconds(2)))),
             "vtt" => "WEBVTT\n\n" + string.Join("\n\n", cues.Select(c => c.Time + "\n" + c.Body)),
             _ => string.Join("\n\n", cues.Select((c, i) => (i + 1) + "\n" + Regex.Replace(Regex.Match(c.Time, @"\d{2}:\d{2}:\d{2}\.\d{3}\s+-->\s+\d{2}:\d{2}:\d{2}\.\d{3}").Value, @"\.(?=\d{3})", ",") + "\n" + c.Body))
         };
