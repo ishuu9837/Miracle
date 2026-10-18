@@ -43,3 +43,30 @@ python3 Scripts/fetch-engines.py
 
 # 2. Generate Xcode project from source folders
 python3 Scripts/generate_xcode_project.py
+```
+
+> **Build & Run:** Open `Miracle.xcodeproj`, choose the **Miracle** scheme and **My Mac**, then press `⌘R` (`⌘U` runs hosted tests). Engine downloads happen strictly at build time—the running app stays 100% offline. Existing local engine copies in `Resources/Engines/arm64` are preserved.
+
+<!-- 06 INSTALLERS & CONTRIBUTING -->
+<img src="assets/readme/title-contributing.svg" width="100%" alt="06 Packaging & QA — Reproducible builds and matrix audits.">
+<img src="assets/readme/card-contributing.svg" width="100%" alt="Testing & Packaging: Run Scripts/test.sh for regression checks. Build output/miracle.dmg via Scripts/build-dmg.sh (trims unused office assets, ad-hoc signs app & PDF helper, enforces <270 MB DMG cap). Intel is outside supported scope.">
+
+```sh
+# Run standard Swift package & hosted regression tests
+Scripts/test.sh
+
+# Run opt-in complete conversion catalog matrix audit
+MIRACLE_FULL_MATRIX_REPORT="$PWD/Docs/CONVERSION_RESULTS.csv" Scripts/test.sh
+
+# Build local ad-hoc signed arm64 test installer (output/miracle.dmg, <270 MB limit)
+Scripts/build-dmg.sh
+```
+
+<p align="center">
+  <a href="Docs/INSTALL.txt"><img src="https://img.shields.io/badge/Installer_Guide-Docs%2FINSTALL.txt-1C2331?style=for-the-badge&labelColor=0A0B0E&logoColor=E5D0B1&logo=apple" alt="Install Guide"></a>
+  <a href="Docs/THIRD_PARTY.md"><img src="https://img.shields.io/badge/Checksums_%26_Sources-Docs%2FTHIRD__PARTY.md-1C2331?style=for-the-badge&labelColor=0A0B0E&logoColor=E5D0B1&logo=git" alt="Third Party Docs"></a>
+  <a href="NOTICE.md"><img src="https://img.shields.io/badge/Notices-NOTICE.md-1C2331?style=for-the-badge&labelColor=0A0B0E&logoColor=E5D0B1&logo=bookstack" alt="Third-party notices"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-3A3228?style=for-the-badge&labelColor=0A0B0E&logoColor=F4F6F8" alt="MIT License"></a>
+</p>
+
+<img src="assets/readme/footer-signature.svg" width="100%" alt="Miracle✨ — Native Apple Silicon file conversion. Built to stay on your Mac.">
