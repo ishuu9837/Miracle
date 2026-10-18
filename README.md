@@ -48,7 +48,6 @@ python3 Scripts/generate_xcode_project.py
 > **Build & Run:** Open `Miracle.xcodeproj`, choose the **Miracle** scheme and **My Mac**, then press `⌘R` (`⌘U` runs hosted tests). Engine downloads happen strictly at build time—the running app stays 100% offline. Existing local engine copies in `Resources/Engines/arm64` are preserved.
 
 <!-- 06 INSTALLERS & CONTRIBUTING -->
-<img src="assets/readme/title-contributing.svg" width="100%" alt="06 Packaging & QA — Reproducible builds and matrix audits.">
 <img src="assets/readme/card-contributing.svg" width="100%" alt="Testing & Packaging: Run Scripts/test.sh for regression checks. Build output/miracle.dmg via Scripts/build-dmg.sh (trims unused office assets, ad-hoc signs app & PDF helper, enforces <270 MB DMG cap). Intel is outside supported scope.">
 
 ```sh
