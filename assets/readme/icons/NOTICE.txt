@@ -1,0 +1,8 @@
+Apple and Swift vectors are vendored from Simple Icons under CC0 1.0 Universal:
+https://github.com/simple-icons/simple-icons/blob/develop/icons/apple.svg
+https://github.com/simple-icons/simple-icons/blob/develop/icons/swift.svg
+https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md
+See LICENSE.txt in this directory.
+
+The Windows four-pane vector is locally defined geometry for platform identification.
+Brand symbols identify their respective platforms and languages.

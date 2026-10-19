@@ -6,6 +6,7 @@ publishing a new release. Graphics supplement readable Markdown, not replace it.
 """
 from html import escape
 from pathlib import Path
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "readme"
@@ -50,19 +51,31 @@ write("hero-banner.svg", 280, "Miracle — open-source, offline file conversion 
 
 # One local SVG keeps the centered badge layout consistent on GitHub without
 # relying on third-party badge services or external fonts.
-def badge(x, y, width, split, label, value, font=20, fill="#1C2331"):
-    return (f'<rect x="{x}" y="{y}" width="{split}" height="52" fill="#07090C"/>'
-            f'<rect x="{x+split}" y="{y}" width="{width-split}" height="52" fill="{fill}"/>'
-            + centered(x+split/2, y+33, label, 18, "white", 400, 2.8)
-            + centered(x+split+(width-split)/2, y+33, value, font, "white", 700, 2.1))
-badges = badge(145, 12, 710, 190, "PLATFORM", "MACOS 13+ / WINDOWS 11")
-badges += badge(45, 80, 910, 160, "ARCH", "APPLE SILICON · WINDOWS X64 / ARM64", 19)
-badges += badge(91, 148, 470, 140, "STACK", "SWIFT 6 / .NET 10", 18)
+def icon(name, x, y, size=24):
+    # Vendored vectors are embedded, so GitHub needs no nested image requests.
+    source = ET.parse(OUT / "icons" / f"{name}.svg").getroot()
+    paths = ''.join(f'<path d="{escape(node.attrib["d"], quote=True)}" fill="#E5D0B1"/>'
+                    for node in source.iter('{http://www.w3.org/2000/svg}path'))
+    return f'<g transform="translate({x} {y}) scale({size / 24})">{paths}</g>'
+
+def badge(x, y, width, split, label, value, font=20, fill="#1C2331", icons=()):
+    body = (f'<rect x="{x}" y="{y}" width="{split}" height="52" fill="#07090C"/>'
+            f'<rect x="{x+split}" y="{y}" width="{width-split}" height="52" fill="{fill}"/>')
+    for index, name in enumerate(icons):
+        body += icon(name, x + (12 if len(icons) == 2 else 18) + index * 30, y + 14)
+    offset = 30 if len(icons) == 2 else 14 if icons else 0
+    body += centered(x+split/2+offset, y+33, label, 16 if len(icons) == 2 else 18,
+                     "white", 400, 2 if len(icons) == 2 else 2.8)
+    body += centered(x+split+(width-split)/2, y+33, value, font, "white", 700, 2.1)
+    return body
+badges = badge(145, 12, 710, 190, "PLATFORM", "MACOS 13+ / WINDOWS 11", icons=("apple", "windows"))
+badges += badge(45, 80, 910, 160, "ARCH", "APPLE SILICON · WINDOWS X64 / ARM64", 19, icons=("apple",))
+badges += badge(91, 148, 470, 140, "STACK", "SWIFT 6 / .NET 10", 18, icons=("swift",))
 badges += badge(579, 148, 330, 140, "MODE", "LOCAL", 20)
 badges += badge(340, 216, 320, 180, "LICENSE", "MIT", 22, "#3A3228")
 (OUT / "platform-badges.svg").write_text(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 284" width="1000" height="284" role="img" aria-labelledby="title"><title id="title">macOS 13+ and Windows 11; Apple Silicon, x64 and ARM64; Swift 6 and .NET 10; local conversion; MIT app source</title>'
-    + DEFS + badges + '</svg>\n', encoding="utf-8")
+    + DEFS + "<!-- Apple and Swift: Simple Icons, CC0; see icons/LICENSE.txt and icons/NOTICE.txt. -->" + badges + '</svg>\n', encoding="utf-8")
 
 sections = [
     ("overview", "01 / OVERVIEW", "Local power. Two native desktops."),
