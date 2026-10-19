@@ -2,12 +2,8 @@
   <img src="assets/readme/hero-banner.svg" width="100%" alt="Miracle — local file conversion for Apple Silicon Macs and Windows x64 / ARM64.">
 </div>
 
-<h1 align="center">Miracle</h1>
-<p align="center">Your files, in a different form. Native desktop previews with local conversion engines.</p>
 <p align="center">
-  <img src="https://img.shields.io/badge/macOS-13%2B_Apple_Silicon-1C2331?style=for-the-badge&labelColor=0A0B0E" alt="macOS 13 or later, Apple Silicon">
-  <img src="https://img.shields.io/badge/Windows-11_x64_%2F_ARM64-1C2331?style=for-the-badge&labelColor=0A0B0E" alt="Windows 11, x64 and ARM64">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/App_source-MIT-3A3228?style=for-the-badge&labelColor=0A0B0E" alt="App source under MIT"></a>
+  <a href="LICENSE"><img src="assets/readme/platform-badges.svg" width="90%" alt="macOS 13+ and Windows 11; Apple Silicon and Windows x64 / ARM64; Swift 6 and .NET 10; local conversion; app source licensed MIT."></a>
 </p>
 
 ## Download

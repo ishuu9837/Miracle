@@ -35,14 +35,34 @@ def card(name, kicker, title, lines):
     body += ''.join(text(38, 140 + i * 31, line) for i, line in enumerate(lines))
     write(name, height, title + ". " + " ".join(lines), body)
 
-hero = text(42, 45, "MAC + WINDOWS / LOCAL FILE CONVERSION", 12, "mono gold", 700)
-hero += text(38, 151, "miracle", 112, "white", 700)
-hero += text(435, 118, "✦", 57, "gold")
-hero += text(42, 206, "Your files. A different form.", 30, "gold", 500)
-hero += text(42, 247, "Apple Silicon · Windows x64 / ARM64 · Open source", 20)
-hero += '<rect x="42" y="277" width="635" height="39" rx="8" fill="#E5D0B1"/>'
-hero += text(58, 303, "MAC 0.3.0 TEST  /  WINDOWS 0.3.2 PREVIEW", 15, "mono", 700)
-write("hero-banner.svg", 350, "Miracle — local file conversion for Mac and Windows", hero)
+def centered(x, y, value, size, cls="muted", weight=400, spacing=0):
+    return f'<text x="{x}" y="{y}" text-anchor="middle" font-size="{size}" font-weight="{weight}" letter-spacing="{spacing}" class="{cls}">{escape(value)}</text>'
+
+def sparkle(x, y, radius, color):
+    return f'<path d="M{x} {y-radius} Q{x+radius*.16} {y-radius*.16} {x+radius} {y} Q{x+radius*.16} {y+radius*.16} {x} {y+radius} Q{x-radius*.16} {y+radius*.16} {x-radius} {y} Q{x-radius*.16} {y-radius*.16} {x} {y-radius}Z" fill="{color}"/>'
+
+hero = '<ellipse cx="250" cy="120" rx="370" ry="185" fill="url(#glow)"/>'
+hero += centered(485, 140, "miracle", 82, "white", 700, -4)
+hero += sparkle(652, 99, 23, "#F4F6F8") + sparkle(684, 73, 9, "#E5D0B1")
+hero += centered(500, 194, "Open-source, offline file conversion for Mac & Windows", 18, "gold", 500, .6)
+hero += centered(500, 226, "Native Swift + WPF/.NET · Apple Silicon & Windows x64 / ARM64 · Local engines", 14, "muted", 400, .3)
+write("hero-banner.svg", 280, "Miracle — open-source, offline file conversion for Mac and Windows", hero)
+
+# One local SVG keeps the centered badge layout consistent on GitHub without
+# relying on third-party badge services or external fonts.
+def badge(x, y, width, split, label, value, font=20, fill="#1C2331"):
+    return (f'<rect x="{x}" y="{y}" width="{split}" height="52" fill="#07090C"/>'
+            f'<rect x="{x+split}" y="{y}" width="{width-split}" height="52" fill="{fill}"/>'
+            + centered(x+split/2, y+33, label, 18, "white", 400, 2.8)
+            + centered(x+split+(width-split)/2, y+33, value, font, "white", 700, 2.1))
+badges = badge(145, 12, 710, 190, "PLATFORM", "MACOS 13+ / WINDOWS 11")
+badges += badge(45, 80, 910, 160, "ARCH", "APPLE SILICON · WINDOWS X64 / ARM64", 19)
+badges += badge(91, 148, 470, 140, "STACK", "SWIFT 6 / .NET 10", 18)
+badges += badge(579, 148, 330, 140, "MODE", "LOCAL", 20)
+badges += badge(340, 216, 320, 180, "LICENSE", "MIT", 22, "#3A3228")
+(OUT / "platform-badges.svg").write_text(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 284" width="1000" height="284" role="img" aria-labelledby="title"><title id="title">macOS 13+ and Windows 11; Apple Silicon, x64 and ARM64; Swift 6 and .NET 10; local conversion; MIT app source</title>'
+    + DEFS + badges + '</svg>\n', encoding="utf-8")
 
 sections = [
     ("overview", "01 / OVERVIEW", "Local power. Two native desktops."),

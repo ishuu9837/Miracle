@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="1000" height="350" role="img" aria-labelledby="title">
-<title id="title">Miracle — local file conversion for Mac and Windows</title><defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280" width="1000" height="280" role="img" aria-labelledby="title">
+<title id="title">Miracle — open-source, offline file conversion for Mac and Windows</title><defs>
 <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#07080A"/><stop offset=".5" stop-color="#121824"/><stop offset="1" stop-color="#080A0F"/></linearGradient>
 <radialGradient id="glow"><stop stop-color="#E5D0B1" stop-opacity=".16"/><stop offset="1" stop-color="#E5D0B1" stop-opacity="0"/></radialGradient>
 <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1.5" fill="#A6BBD2" opacity=".13"/></pattern>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif} .mono{font-family:Menlo,Consolas,monospace;letter-spacing:2px} .gold{fill:#E5D0B1}.white{fill:#F4F6F8}.muted{fill:#B5C1D1}</style></defs>
-<rect x="1" y="1" width="998" height="348" rx="22" fill="url(#bg)" stroke="#6E7F96" stroke-opacity=".4"/>
-<rect x="2" y="2" width="996" height="346" rx="22" fill="url(#dots)"/>
+<rect x="1" y="1" width="998" height="278" rx="22" fill="url(#bg)" stroke="#6E7F96" stroke-opacity=".4"/>
+<rect x="2" y="2" width="996" height="276" rx="22" fill="url(#dots)"/>
 <ellipse cx="850" cy="80" rx="300" ry="220" fill="url(#glow)"/>
-<text x="42" y="45" font-size="12" font-weight="700" class="mono gold">MAC + WINDOWS / LOCAL FILE CONVERSION</text><text x="38" y="151" font-size="112" font-weight="700" class="white">miracle</text><text x="435" y="118" font-size="57" font-weight="400" class="gold">✦</text><text x="42" y="206" font-size="30" font-weight="500" class="gold">Your files. A different form.</text><text x="42" y="247" font-size="20" font-weight="400" class="muted">Apple Silicon · Windows x64 / ARM64 · Open source</text><rect x="42" y="277" width="635" height="39" rx="8" fill="#E5D0B1"/><text x="58" y="303" font-size="15" font-weight="700" class="mono">MAC 0.3.0 TEST  /  WINDOWS 0.3.2 PREVIEW</text></svg>
+<ellipse cx="250" cy="120" rx="370" ry="185" fill="url(#glow)"/><text x="485" y="140" text-anchor="middle" font-size="82" font-weight="700" letter-spacing="-4" class="white">miracle</text><path d="M652 76 Q655.68 95.32 675 99 Q655.68 102.68 652 122 Q648.32 102.68 629 99 Q648.32 95.32 652 76Z" fill="#F4F6F8"/><path d="M684 64 Q685.44 71.56 693 73 Q685.44 74.44 684 82 Q682.56 74.44 675 73 Q682.56 71.56 684 64Z" fill="#E5D0B1"/><text x="500" y="194" text-anchor="middle" font-size="18" font-weight="500" letter-spacing="0.6" class="gold">Open-source, offline file conversion for Mac &amp; Windows</text><text x="500" y="226" text-anchor="middle" font-size="14" font-weight="400" letter-spacing="0.3" class="muted">Native Swift + WPF/.NET · Apple Silicon &amp; Windows x64 / ARM64 · Local engines</text></svg>
