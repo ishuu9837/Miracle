@@ -1,0 +1,21 @@
+{
+  "runtimeIdentifier": "win-x64",
+  "command": "dotnet restore -p:RuntimeIdentifier=win-x64 -p:NuGetAudit=true -p:NuGetAuditMode=all -p:NuGetAuditLevel=low -p:TreatWarningsAsErrors=true",
+  "exitCode": 0,
+  "knownVulnerabilitiesReported": false,
+  "packageAuditMode": "all direct and transitive packages, low severity and above",
+  "libraries": [
+    "bblanchon.PDFium.Win32/157.0.8100",
+    "DocumentFormat.OpenXml/3.5.1",
+    "DocumentFormat.OpenXml.Framework/3.5.1",
+    "Magick.NET-Q8-x64/15.0.0",
+    "Magick.NET.Core/15.0.0",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2",
+    "Microsoft.Extensions.Logging.Abstractions/8.0.3",
+    "PdfPig/0.1.16",
+    "PDFsharp-WPF/6.2.4",
+    "SharpCompress/1.0.0",
+    "System.IO.Packaging/10.0.2"
+  ],
+  "scope": "NuGet dependency audit only; native engine code is outside its scope."
+}

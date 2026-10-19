@@ -1,0 +1,853 @@
+{
+  "removedBytes": 848625772,
+  "removed": [
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-uk",
+      "bytes": 10510657
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-sr",
+      "bytes": 11358360
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-si",
+      "bytes": 1060282
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-zu",
+      "bytes": 12397
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-hu",
+      "bytes": 8020254
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-nl",
+      "bytes": 2701161
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-bg",
+      "bytes": 7167985
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-hr",
+      "bytes": 855110
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-af",
+      "bytes": 1330153
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-bn",
+      "bytes": 2392185
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-ne",
+      "bytes": 1893940
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-de",
+      "bytes": 85582733
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-hi",
+      "bytes": 5049758
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-gd",
+      "bytes": 4865841
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-br",
+      "bytes": 3993306
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-ko",
+      "bytes": 13969947
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-bo",
+      "bytes": 23691
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-an",
+      "bytes": 293207
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-bs",
+      "bytes": 368525
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-gl",
+      "bytes": 10118935
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-ar",
+      "bytes": 8098058
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-lt",
+      "bytes": 1308818
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-en",
+      "bytes": 26437293
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-fa",
+      "bytes": 2606042
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-lo",
+      "bytes": 681658
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-eo",
+      "bytes": 747549
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-id",
+      "bytes": 2721407
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-fr",
+      "bytes": 6969523
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-et",
+      "bytes": 4792862
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-es",
+      "bytes": 23588582
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-tr",
+      "bytes": 38431437
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-th",
+      "bytes": 1322870
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-pl",
+      "bytes": 8790969
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-vi",
+      "bytes": 53302
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-sv",
+      "bytes": 5590357
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-sq",
+      "bytes": 2876691
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-sk",
+      "bytes": 4653137
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-sl",
+      "bytes": 4820370
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-pt-PT",
+      "bytes": 5607430
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-da",
+      "bytes": 8969272
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-gu",
+      "bytes": 3804528
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-no",
+      "bytes": 11593982
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-ckb",
+      "bytes": 865754
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-mn",
+      "bytes": 18645552
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-pt-BR",
+      "bytes": 27253854
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-he",
+      "bytes": 7888773
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-be",
+      "bytes": 10841282
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-oc",
+      "bytes": 2805600
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-ca",
+      "bytes": 18456676
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-is",
+      "bytes": 3039171
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-it",
+      "bytes": 4059055
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-cs",
+      "bytes": 8715944
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-lv",
+      "bytes": 2108245
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-el",
+      "bytes": 10161861
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-ro",
+      "bytes": 6116278
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-te",
+      "bytes": 3420602
+    },
+    {
+      "path": "Engines/LibreOffice/share/extensions/dict-ru",
+      "bytes": 6894354
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sl",
+      "bytes": 3376839
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/szl",
+      "bytes": 1818871
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sk",
+      "bytes": 3321771
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/pa_IN",
+      "bytes": 1863058
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/mai",
+      "bytes": 842695
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/kab",
+      "bytes": 1522201
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ug",
+      "bytes": 1511821
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sat_Olck",
+      "bytes": 4738348
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sd",
+      "bytes": 1008791
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/uz",
+      "bytes": 624048
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/pl",
+      "bytes": 3451975
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sa_IN",
+      "bytes": 1215592
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/vi",
+      "bytes": 2209059
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sq",
+      "bytes": 1140527
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sv",
+      "bytes": 3371852
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ga",
+      "bytes": 3471809
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/he",
+      "bytes": 2116565
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/km",
+      "bytes": 2536263
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/nr",
+      "bytes": 544630
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/hy",
+      "bytes": 4231676
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/am",
+      "bytes": 2924065
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/nn",
+      "bytes": 3351177
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/be",
+      "bytes": 4162016
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/da",
+      "bytes": 3370423
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/mr",
+      "bytes": 1593784
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/kk",
+      "bytes": 4169128
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/gu",
+      "bytes": 1899027
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/dz",
+      "bytes": 1715808
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/mn",
+      "bytes": 3899802
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ab",
+      "bytes": 2864966
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/pt_BR",
+      "bytes": 3455994
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ja",
+      "bytes": 3039488
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/el",
+      "bytes": 4342643
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/lv",
+      "bytes": 1925860
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/oc",
+      "bytes": 1879300
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/fy",
+      "bytes": 2482958
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/bn_IN",
+      "bytes": 2290859
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/lb",
+      "bytes": 193088
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/it",
+      "bytes": 3491263
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/om",
+      "bytes": 1166635
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ca",
+      "bytes": 3445496
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/zh_TW",
+      "bytes": 3249884
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/is",
+      "bytes": 2203092
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/cs",
+      "bytes": 3405796
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/nso",
+      "bytes": 665856
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/te",
+      "bytes": 1490396
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/fur",
+      "bytes": 346740
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ru",
+      "bytes": 4071285
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/tl",
+      "bytes": 3360864
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/kmr@latin",
+      "bytes": 701982
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/kok",
+      "bytes": 1074346
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/xh",
+      "bytes": 580293
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ro",
+      "bytes": 3512252
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/hsb",
+      "bytes": 3474933
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/zh_CN",
+      "bytes": 3245980
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ss",
+      "bytes": 564448
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ve",
+      "bytes": 567401
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/st",
+      "bytes": 557013
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/zu",
+      "bytes": 629816
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ckb",
+      "bytes": 823933
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/mni",
+      "bytes": 1071504
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/common",
+      "bytes": 207992
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/pt",
+      "bytes": 3001835
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/uk",
+      "bytes": 4093514
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sr",
+      "bytes": 2658374
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/brx",
+      "bytes": 921433
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/vec",
+      "bytes": 1885152
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sr@latin",
+      "bytes": 465824
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/si",
+      "bytes": 1281042
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ml",
+      "bytes": 1602804
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/bo",
+      "bytes": 1463904
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/mk",
+      "bytes": 1281071
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sat",
+      "bytes": 1468451
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/gug",
+      "bytes": 1168047
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/kn",
+      "bytes": 1682160
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/bs",
+      "bytes": 1305117
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/my",
+      "bytes": 1403355
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ar",
+      "bytes": 2236040
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/gl",
+      "bytes": 3398680
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/hr",
+      "bytes": 1895539
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/hu",
+      "bytes": 3353232
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/nl",
+      "bytes": 3453488
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/bg",
+      "bytes": 4112257
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ks",
+      "bytes": 725156
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/bn",
+      "bytes": 1545118
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ne",
+      "bytes": 1771158
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ast",
+      "bytes": 1787804
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/af",
+      "bytes": 3377626
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/nb",
+      "bytes": 3345303
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/hi",
+      "bytes": 1334558
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ka",
+      "bytes": 5025423
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/de",
+      "bytes": 3489435
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/as",
+      "bytes": 1508373
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/gd",
+      "bytes": 1919546
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/br",
+      "bytes": 1540268
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ko",
+      "bytes": 2244437
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ca@valencia",
+      "bytes": 3394965
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/fi",
+      "bytes": 2772693
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/eo",
+      "bytes": 3350636
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/id",
+      "bytes": 3359925
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/fr",
+      "bytes": 3545794
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/dgo",
+      "bytes": 1156986
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/es",
+      "bytes": 3492032
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/et",
+      "bytes": 2564077
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/fa",
+      "bytes": 959782
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/lt",
+      "bytes": 2485613
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/or",
+      "bytes": 1694727
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/cy",
+      "bytes": 3363336
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/eu",
+      "bytes": 2985779
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sid",
+      "bytes": 1221163
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/lo",
+      "bytes": 4411873
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ts",
+      "bytes": 559065
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/tt",
+      "bytes": 284136
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/sw_TZ",
+      "bytes": 700180
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/dsb",
+      "bytes": 3495100
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/ta",
+      "bytes": 2376140
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/th",
+      "bytes": 4282524
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/tr",
+      "bytes": 3250706
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/rw",
+      "bytes": 763923
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/tn",
+      "bytes": 497950
+    },
+    {
+      "path": "Engines/LibreOffice/program/resource/tg",
+      "bytes": 972504
+    },
+    {
+      "path": "Engines/LibreOffice/help",
+      "bytes": 11167641
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sifr.zip",
+      "bytes": 2422925
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sifr_svg.zip",
+      "bytes": 2418476
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_colibre_dark_svg.zip",
+      "bytes": 3011585
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sukapura.zip",
+      "bytes": 3029315
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_colibre_dark.zip",
+      "bytes": 2809377
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sukapura_dark.zip",
+      "bytes": 2956767
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_breeze_dark_svg.zip",
+      "bytes": 1663876
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_karasa_jaga.zip",
+      "bytes": 5024694
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sukapura_svg.zip",
+      "bytes": 3559264
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_helpimg.zip",
+      "bytes": 1575759
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_elementary_svg.zip",
+      "bytes": 5672928
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_karasa_jaga_svg.zip",
+      "bytes": 16443669
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sukapura_dark_svg.zip",
+      "bytes": 3547156
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_colibre_svg.zip",
+      "bytes": 3210039
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_breeze_svg.zip",
+      "bytes": 1660857
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sifr_dark.zip",
+      "bytes": 2394143
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_elementary.zip",
+      "bytes": 4349420
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_breeze.zip",
+      "bytes": 2033581
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_breeze_dark.zip",
+      "bytes": 2031927
+    },
+    {
+      "path": "Engines/LibreOffice/share/config/images_sifr_dark_svg.zip",
+      "bytes": 2416154
+    },
+    {
+      "path": "cs",
+      "bytes": 1340608
+    },
+    {
+      "path": "de",
+      "bytes": 1383064
+    },
+    {
+      "path": "es",
+      "bytes": 1354304
+    },
+    {
+      "path": "fr",
+      "bytes": 1373336
+    },
+    {
+      "path": "it",
+      "bytes": 1363688
+    },
+    {
+      "path": "ja",
+      "bytes": 1466440
+    },
+    {
+      "path": "ko",
+      "bytes": 1381408
+    },
+    {
+      "path": "pl",
+      "bytes": 1369000
+    },
+    {
+      "path": "pt-BR",
+      "bytes": 1344192
+    },
+    {
+      "path": "ru",
+      "bytes": 1625752
+    },
+    {
+      "path": "tr",
+      "bytes": 1332256
+    },
+    {
+      "path": "zh-Hans",
+      "bytes": 1250416
+    },
+    {
+      "path": "zh-Hant",
+      "bytes": 1259080
+    }
+  ]
+}

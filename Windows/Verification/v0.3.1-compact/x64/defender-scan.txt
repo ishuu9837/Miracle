@@ -1,0 +1,3 @@
+﻿Scan starting...
+Scan finished.
+Scanning C:\Users\Public\MiracleArchive-x64-031\Miracle found no threats.

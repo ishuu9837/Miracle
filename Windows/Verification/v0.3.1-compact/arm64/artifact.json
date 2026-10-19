@@ -1,0 +1,16 @@
+{
+  "filename": "Miracle-Windows-ARM64-v0.3.1-compact.7z",
+  "bytes": 240841354,
+  "sha256": "8ff94a99eb77972d68116f9a9bda639bd5c756b84c9d0a4df7c48dc867402792",
+  "expandedBytes": 1296134798,
+  "files": 9517,
+  "appAssemblySha256": "b32d47e2557ff66ef866fea90cbc4e40ce8df688d2616c1d2cc3d603a03216dd",
+  "archiveIntegrity": "7-Zip 26.04 test passed",
+  "windowsExtraction": "Built-in tar.exe; all file hashes matched; no extra files",
+  "downloadLimitBytes": 300000000,
+  "underLimit": true,
+  "appVersion": "0.3.1",
+  "build": "Release, self-contained, warnings as errors",
+  "testScope": "Native Windows ARM64; targeted Office/page/media checks and final regression",
+  "nativeIntelAmdHardwareVerified": null
+}

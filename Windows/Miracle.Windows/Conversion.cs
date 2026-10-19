@@ -43,7 +43,8 @@ public sealed partial class ConversionService
             if (!Path.IsPathFullyQualified(candidate) || !File.Exists(candidate)) continue;
             try
             {
-                using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(8));
+                // A cold first launch can include antivirus inspection and x64 emulation startup.
+                using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(30));
                 string output = await RunAsync(candidate, new[] { "-hide_banner", "-encoders" }, timeout.Token);
                 encoders = Regex.Matches(output, @"(?m)^\s*[VAS][A-Z\.]{5}\s+(\S+)").Select(m => m.Groups[1].Value).ToHashSet(StringComparer.Ordinal);
                 if (encoders.Count == 0) continue;

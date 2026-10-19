@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "checks": [
+    "Two-page DOCX \u2192 all JPG pages at 300 DPI",
+    "Two-page DOCX \u2192 all PNG pages at 300 DPI"
+  ]
+}

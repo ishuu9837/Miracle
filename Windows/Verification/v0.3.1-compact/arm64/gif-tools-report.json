@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "video.compress",
+    "video.metadata",
+    "video.mute",
+    "video.trim",
+    "video.crop",
+    "video.speed",
+    "video.snapshot",
+    "video.split",
+    "video.redact"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+    "host":  "Windows 11 ARM64 Parallels VM using x64 emulation",
+    "architecture":  "x64 (AMD64) app and Office binaries",
+    "nativeIntelAmdHardwareVerified":  false,
+    "featuresExitCode":  0,
+    "regressionExitCode":  0,
+    "administratorToken":  false
+}
