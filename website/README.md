@@ -20,3 +20,9 @@ python3 -m http.server 4175 --directory website
 ```
 
 Open http://localhost:4175. Motion can be paused using the header control and respects the system reduced-motion preference.
+
+## Walkthrough and setup guide
+
+`walkthrough.js` and `walkthrough.css` add five-step illustrative Mac and Windows tours: installation/extraction, launch, file selection, conversion and result. Platform tabs and step buttons work with a keyboard. Playback runs only while the section is visible, the page is foreground and motion is enabled; visitors can pause or replay. System reduced-motion preference and the header motion toggle stop autoplay. These animations use sample files and do not execute OS actions or process uploads.
+
+The Mac DMG button keeps its direct GitHub asset link and opens a native setup dialog. Visitors can reopen it with the setup-guide button, dismiss with Escape or the close/Done buttons, and return focus to the trigger. The guide describes Applications installation and Apple's Privacy & Security approval flow for the unnotarized test build.

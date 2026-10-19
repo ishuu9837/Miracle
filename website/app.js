@@ -2,7 +2,7 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
 const motionToggle=document.querySelector('.motion-toggle');
 let motionPaused=reduceMotion.matches;
 let motionOverride=false;
-function syncMotion(){document.body.classList.toggle('motion-paused',motionPaused);motionToggle.setAttribute('aria-pressed',String(!motionPaused));motionToggle.setAttribute('aria-label',motionPaused?'Enable motion':'Pause motion');motionToggle.innerHTML=(motionPaused?'▶':'Ⅱ')+' <span>Motion '+(motionPaused?'off':'on')+'</span>';if(motionPaused)document.getAnimations().forEach(a=>a.cancel());}
+function syncMotion(){document.body.classList.toggle('motion-paused',motionPaused);motionToggle.setAttribute('aria-pressed',String(!motionPaused));motionToggle.setAttribute('aria-label',motionPaused?'Enable motion':'Pause motion');motionToggle.innerHTML=(motionPaused?'▶':'Ⅱ')+' <span>Motion '+(motionPaused?'off':'on')+'</span>';if(motionPaused)document.getAnimations().forEach(a=>a.cancel());document.dispatchEvent(new Event('miracle-motion-change'));}
 motionToggle.addEventListener('click',()=>{motionOverride=true;motionPaused=!motionPaused;syncMotion()});
 reduceMotion.addEventListener('change',()=>{if(!motionOverride){motionPaused=reduceMotion.matches;syncMotion()}});
 syncMotion();
