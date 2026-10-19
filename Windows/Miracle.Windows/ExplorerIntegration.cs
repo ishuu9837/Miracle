@@ -8,20 +8,22 @@ using System.Windows.Threading;
 
 namespace Miracle.Windows;
 
-// Only a short, unmodified Shift tap in the foreground Explorer window triggers selection.
+// Observe short Shift taps without swallowing input. Explorer remains the drag source.
 // Keyboard content is never collected or persisted, and events are never swallowed.
 public sealed class ExplorerShiftHook : IDisposable
 {
     private readonly HookProc callback;
     private readonly Dispatcher dispatcher;
-    private readonly Action<string[]> selection;
+    private readonly Action<string[], bool> selection;
+    private readonly Func<bool> cycle;
+    private readonly Action dismiss;
     private IntPtr hook;
-    private bool shiftHeld, chord;
-    private long started;
-    public bool Enabled { get; set; }
-    public ExplorerShiftHook(Dispatcher dispatcher, Action<string[]> selection)
+    private readonly ShiftTapGesture gesture = new();
+    private bool enabled;
+    public bool Enabled { get => enabled; set { enabled = value; gesture.Reset(); } }
+    public ExplorerShiftHook(Dispatcher dispatcher, Action<string[], bool> selection, Func<bool> cycle, Action dismiss)
     {
-        this.dispatcher = dispatcher; this.selection = selection; callback = Handle;
+        this.dispatcher = dispatcher; this.selection = selection; this.cycle = cycle; this.dismiss = dismiss; callback = Handle;
         hook = SetWindowsHookEx(13, callback, GetModuleHandle(null), 0);
         if (hook == IntPtr.Zero) throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
     }
@@ -31,26 +33,24 @@ public sealed class ExplorerShiftHook : IDisposable
         {
             int key = Marshal.ReadInt32(data); long msg = message.ToInt64();
             bool down = msg is 0x100 or 0x104, up = msg is 0x101 or 0x105;
-            if (key is 0x10 or 0xA0 or 0xA1)
+            // Ignore synthetic key injection; no text/key history is collected.
+            if ((Marshal.ReadInt32(data, 8) & 0x10) == 0)
             {
-                if (down && !shiftHeld) { shiftHeld = true; chord = false; started = Environment.TickCount64; }
-                if (up && shiftHeld)
+                if (down && key == 0x1B) dispatcher.BeginInvoke(dismiss);
+                if (gesture.Feed(key, down, up, Environment.TickCount64, ModifierPressed(), LeftButtonDown))
                 {
-                    shiftHeld = false;
-                    if (!chord && Environment.TickCount64 - started < 650 && !ModifierPressed())
-                    {
-                        IntPtr foreground = GetForegroundWindow();
-                        var name = new StringBuilder(256); GetClassName(foreground, name, name.Capacity);
-                        if (name.ToString() == "CabinetWClass") dispatcher.BeginInvoke(() => ReadSelection(foreground));
-                    }
+                    IntPtr foreground = GetForegroundWindow();
+                    var name = new StringBuilder(256); GetClassName(foreground, name, name.Capacity);
+                    bool drag = gesture.WasDragging;
+                    dispatcher.BeginInvoke(() => { if (!Enabled) return; if (cycle()) return; if (name.ToString() == "CabinetWClass") ReadSelection(foreground, drag); });
                 }
             }
-            else if (down && shiftHeld) chord = true;
         }
         return CallNextHookEx(hook, code, message, data);
     }
     private static bool ModifierPressed() => (GetAsyncKeyState(0x11) & 0x8000) != 0 || (GetAsyncKeyState(0x12) & 0x8000) != 0 || (GetAsyncKeyState(0x5B) & 0x8000) != 0 || (GetAsyncKeyState(0x5C) & 0x8000) != 0;
-    private void ReadSelection(IntPtr foreground)
+    internal static bool LeftButtonDown => (GetAsyncKeyState(1) & 0x8000) != 0;
+    private void ReadSelection(IntPtr foreground, bool drag)
     {
         if (!Enabled || GetForegroundWindow() != foreground) return;
         object? shell = null, windows = null;
@@ -77,7 +77,7 @@ public sealed class ExplorerShiftHook : IDisposable
                         try { item = ((dynamic)items).Item(j); string path = ((dynamic)item).Path; if (File.Exists(path)) files.Add(path); }
                         finally { Release(item); }
                     }
-                    if (files.Count > 0) selection(files.ToArray());
+                    if (files.Count > 0) selection(files.ToArray(), drag);
                     break;
                 }
                 finally { Release(items); Release(document); Release(window); }
@@ -96,4 +96,25 @@ public sealed class ExplorerShiftHook : IDisposable
     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
     [DllImport("user32.dll", CharSet = CharSet.Unicode)] private static extern int GetClassName(IntPtr window, StringBuilder name, int maximum);
     [DllImport("user32.dll")] private static extern short GetAsyncKeyState(int key);
+}
+
+// A tap fires only on the final Shift release, never on auto-repeat or a chord.
+internal sealed class ShiftTapGesture
+{
+    private readonly HashSet<int> held = new();
+    private long started;
+    private bool chord, dragging;
+    internal bool WasDragging { get; private set; }
+    internal void Reset() { held.Clear(); chord = false; dragging = false; WasDragging = false; }
+    internal bool Feed(int key, bool down, bool up, long now, bool modified, bool mouseDown)
+    {
+        if (key is not (0x10 or 0xA0 or 0xA1)) { if (down && held.Count > 0) chord = true; return false; }
+        if (down) {
+            if (held.Count == 0) { started = now; chord = modified; dragging = mouseDown; }
+            held.Add(key); return false;
+        }
+        if (!up || !held.Remove(key) || held.Count != 0) return false;
+        WasDragging = dragging && mouseDown;
+        return !chord && !modified && now - started < 650;
+    }
 }

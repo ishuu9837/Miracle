@@ -1,0 +1,11 @@
+{
+    "regressionExitCode":  0,
+    "architecture":  "x64",
+    "wheelCoverage":  "Native WPF focus preservation, set wrapping, stale selections, dropped-file payload and geometry, tool callback; gesture recognizer sequences",
+    "physicalExplorerDragManuallyVerified":  false,
+    "host":  "Windows 11 ARM64 Parallels VM using x64 emulation",
+    "nativeIntelAmdHardwareVerified":  false,
+    "featuresExitCode":  0,
+    "administratorToken":  false,
+    "uiLimit":  "Computer-use VM surface unavailable for manual held-drag plus Shift verification"
+}

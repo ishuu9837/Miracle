@@ -29,3 +29,6 @@ Identical input/output formats are not shown as conversions. Audio and video out
 - Tool count: **28 category entries** (7 image + 9 video + 7 audio + 4 PDF + 1 archive), with repeated names across categories. This is distinct from a count of unique tool names or conversion pairs.
 
 The Mac build has a separate implementation and verification status. This Windows table is not a claim about Mac coverage.
+
+### Drag + Shift wheel (0.3.2)
+With Miracle running, drag a supported selection from File Explorer and tap Shift. Further short taps cycle format pages, then supported file-tool pages, and wrap around. There are at most six colorful choices per set. Keep holding the mouse, slide onto an option, then release. A file-tool drop opens its settings; it does not apply a destructive edit automatically. Esc or dropping outside a choice cancels. Colorful primary buttons remain available. Disable the session shortcut in the app if another utility uses Shift. Desktop/other application drag sources are not supported by this Explorer shortcut.

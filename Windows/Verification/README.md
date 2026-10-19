@@ -1,3 +1,20 @@
+# Latest: Windows 0.3.2 drag + Shift preview
+
+Evidence: [`v0.3.2-shift/`](v0.3.2-shift/).
+
+- Final x64 ship binary: **303/303 feature checks**, exit zero; **47/47 regressions**, exit zero. x64 ran under emulation in the Windows 11 ARM64 development VM; native Intel/AMD hardware was not available.
+- Final ARM64 ship binary: **47/47 regressions**, exit zero, on Windows 11 ARM64. The full feature suite was not rerun on ARM64 for this UI-only update; engine scope from 0.3.1 remains historical evidence below.
+- New wheel coverage: short Shift taps, auto-repeat/chord/long-hold rejection, both Shift keys, disable/reset behavior, six-option pagination and wrap, stale-selection rejection, no focus activation in drag mode, file payload/geometry validation, and deferred tool/format commitment. UI checks are run serially because normal wheels deliberately close on deactivation.
+- **Manual Explorer held-drag plus physical Shift validation is still pending**: computer-use could not access the live VM surface. Native WPF/drop-handler and gesture tests do not substitute for this end-to-end check. Desktop drag sources and arbitrary application drag sources are not implemented.
+- Both final `.7z` archives passed integrity tests, strict <300,000,000-byte gates, Windows built-in extraction, and every-file SHA-256 comparison: x64 9,464 files; ARM64 9,517 files. See each `artifact.json` for exact download hashes/sizes and expanded bytes.
+- Both exact extracted app/engine folders were scanned locally by enabled Windows Defender with signatures **1.461.98.0**: scan logs explicitly report **found no threats**, exit zero, no matching detections. No public scanner upload.
+- Both embedded PE manifests are `asInvoker`, `uiAccess=false`; matching CPU types and executable hashes are recorded. x64 tests used a standard-user token. Both builds remain **NotSigned**. Smart App Control was in Evaluation, not Enforced. Verified-publisher, clean-machine SmartScreen/SAC, native x64 hardware, and manual Explorer drag are not passing release claims.
+- NuGet direct/transitive audit for the final x64 dependency selection reported no known advisories with low-or-higher severity; native engine code is outside that audit.
+
+The source and binaries are a preview with the above limits, not a signed general release. Website changes include the matching Windows animation, updated download links, Documentation, and Privacy Policy.
+
+---
+
 # Windows 0.3.1 compact releases
 
 Both offline downloads are strictly below **300,000,000 bytes**. Exact hashes and sizes are in [`v0.3.1-compact/`](v0.3.1-compact/).

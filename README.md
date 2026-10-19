@@ -71,10 +71,10 @@ Scripts/build-dmg.sh
 
 ## Download website
 
-The landing page and interactive demo live in [`website/`](website/). Import this repository into Vercel with Root Directory `./` and framework preset **Other**; the root [`vercel.json`](vercel.json) serves `website/` without a build step. See [website deployment instructions](website/README.md).
+The landing page and interactive demo live in [`website/`](website/). Import this repository into Vercel with Root Directory `./` and framework preset **Other**; the root [`vercel.json`](vercel.json) serves `website/` without a build step. See [website deployment instructions](website/README.md), [documentation](website/documentation.html), and [privacy policy](website/privacy.html).
 
 ## Windows preview
 
-A native WPF/.NET 10 **Windows 11 x64 / ARM64 preview** is available in [`Windows/`](Windows/README.md), with colorful format buttons, an optional wheel, 28 category tool entries, and bundled offline media, image and Office engines. [Download the portable Windows preview](https://github.com/ishuu9837/Miracle/releases/tag/windows-v0.3.1-preview).
+A native WPF/.NET 10 **Windows 11 x64 / ARM64 preview** is available in [`Windows/`](Windows/README.md), with colorful format buttons, a drag + Shift wheel with cycling format/tool sets, 28 category tool entries, and bundled offline media, image and Office engines. [Download the portable Windows preview](https://github.com/ishuu9837/Miracle/releases/tag/windows-v0.3.2-preview).
 
 The Windows build is unsigned and has its own [feature/fidelity guide](Windows/FEATURES.md) and [verification evidence](Windows/Verification/README.md). Genuine Pages export and OCR are unavailable. The Mac build has separate capabilities and test coverage. Choose x64 for Intel/AMD PCs and ARM64 for Snapdragon PCs or Windows ARM VMs. Compact `.7z` downloads include offline engines; exact sizes and verification scope are recorded in the release. x64 tests here run under Windows ARM emulation.

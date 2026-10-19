@@ -55,7 +55,8 @@ internal static class SelfTest
             Require(service.CommonOutputs(new[] { input, srt }).Count == 0, "Mixed selection accepted invalid output."); checks.Add("Mixed selection validation");
             string svg=Path.Combine(directory,"shape.svg");await File.WriteAllTextAsync(svg,"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"96\" height=\"64\"><rect width=\"96\" height=\"64\" fill=\"coral\"/></svg>");
             foreach(string format in service.Outputs(svg)){await service.ConvertAsync(svg,format,directory,CancellationToken.None);checks.Add("Restricted SVG → "+format);}
-            await CheckWheelCloseAsync(input); checks.Add("14-option wheel layout/selection/commit/deactivate regression");
+            await CheckWheelCloseAsync(input); checks.Add("Paginated wheel, Shift cycles, stale-selection rejection, deferred commit and layout");
+            await CheckDragWheelAsync(input); checks.Add("Drag wheel does not activate, validates drop payload/geometry, cycles tools, and commits the dropped files");
             await SecurityChecksAsync(service, input, directory, checks);
             await FeatureSafety.RunAsync(directory,checks);
             await CheckPrimaryFlowAsync(input); checks.Add("Primary conversion, file reset, animated intro completion/skip and window close");
@@ -72,9 +73,36 @@ internal static class SelfTest
             try
             {
                 var dispatcher = Dispatcher.CurrentDispatcher;
-                bool committed = false;
-                var window = new WheelWindow(new[] { input }, new[] { "jpg", "png", "webp", "heic", "tiff", "avif", "pdf", "mp4", "mov", "mkv", "webm", "avi", "wmv", "bmp" }, (selectedFiles, format) => { Require(format == "bmp" && selectedFiles[0] == input, "Wheel committed wrong format or files."); committed = true; });
-                window.Loaded += (_, _) => dispatcher.BeginInvoke(() => { Require(window.ChoicesDoNotOverlap(), "Wheel options overlap."); window.Select("bmp"); window.Commit(); Require(committed, "Wheel did not commit."); completion.TrySetResult(); dispatcher.BeginInvokeShutdown(DispatcherPriority.Background); });
+                var gesture = new ShiftTapGesture();
+                Require(!gesture.Feed(0xA0,true,false,0,false,true), "Shift down fired.");
+                Require(!gesture.Feed(0xA0,true,false,100,false,true), "Auto-repeat fired.");
+                Require(gesture.Feed(0xA0,false,true,200,false,true) && gesture.WasDragging, "Drag tap failed.");
+                gesture.Feed(0xA0,true,false,300,false,true); gesture.Feed(65,true,false,350,false,true);
+                Require(!gesture.Feed(0xA0,false,true,400,false,true), "Chord opened wheel.");
+                gesture.Feed(0xA0,true,false,500,false,false);
+                Require(!gesture.Feed(0xA0,false,true,1200,false,false), "Long hold opened wheel.");
+                gesture.Feed(0xA0,true,false,1300,false,true); gesture.Feed(0xA1,true,false,1310,false,true);
+                Require(!gesture.Feed(0xA0,false,true,1320,false,true) && gesture.Feed(0xA1,false,true,1330,false,true), "Two Shift keys repeated tap.");
+                gesture.Feed(0xA0,true,false,1400,true,true);
+                Require(!gesture.Feed(0xA0,false,true,1500,false,true), "Modified Shift fired.");
+                gesture.Feed(0xA0,true,false,1600,false,true); gesture.Reset();
+                Require(!gesture.Feed(0xA0,false,true,1700,false,true), "Disabled shortcut retained state.");
+                var window = new WheelWindow(new[] { input }, new[] { "jpg", "png", "webp", "heic", "tiff", "avif", "pdf", "mp4", "mov", "mkv", "webm", "avi", "wmv", "bmp" },
+                    (selectedFiles, format) => {
+                        try { Require(format == "bmp" && selectedFiles[0] == input, "Wheel committed wrong format or files."); completion.TrySetResult(); }
+                        catch(Exception ex) { completion.TrySetException(ex); }
+                        dispatcher.BeginInvokeShutdown(DispatcherPriority.Background);
+                    });
+                window.Loaded += (_, _) => dispatcher.BeginInvoke(() => {
+                    try {
+                        Require(window.PageCount == 3, "Options were not paginated.");
+                        for(int i=0;i<3;i++) { Require(window.ChoicesDoNotOverlap(), "Wheel options overlap."); window.NextPage(); }
+                        Require(window.PageIndex == 0, "Shift cycle did not wrap.");
+                        window.Select("jpg"); window.NextPage(); window.Commit();
+                        Require(window.IsVisible, "Changing sets committed a stale selection.");
+                        window.NextPage(); window.Select("bmp"); window.Commit();
+                    } catch(Exception ex) { completion.TrySetException(ex); dispatcher.BeginInvokeShutdown(DispatcherPriority.Background); }
+                });
                 window.Show(); Dispatcher.Run();
             }
             catch (Exception ex) { completion.TrySetException(ex); }
@@ -82,6 +110,44 @@ internal static class SelfTest
         thread.IsBackground = true; thread.SetApartmentState(ApartmentState.STA); thread.Start();
         return completion.Task.WaitAsync(TimeSpan.FromSeconds(15));
     }
+    private static Task CheckDragWheelAsync(string input)
+    {
+        var completion = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var thread = new Thread(() => {
+            var dispatcher = Dispatcher.CurrentDispatcher;
+            try {
+                var source = new Window { Title = "Miracle isolated drag regression", Width = 300, Height = 180 };
+                source.Show();
+                IntPtr foreground = DragTestForeground();
+                string[] dropped = { input };
+                var ids = FileTools.For(input).Select(t => t.Id).ToArray();
+                bool wrongCommit = false;
+                var wheel = new WheelWindow(new[] { input.Replace("sample", "stale-source") }, new[] { "jpg", "bmp", "pdf", "webp", "heic", "tiff", "avif" },
+                    (_, _) => wrongCommit = true, true, ids, (actual, id) => {
+                        try { Require(!wrongCommit && id == "image.redact" && actual.SequenceEqual(dropped), "Drop used stale files or wrong tool."); completion.TrySetResult(); }
+                        catch(Exception ex) { completion.TrySetException(ex); }
+                        source.Close(); dispatcher.BeginInvokeShutdown(DispatcherPriority.Background);
+                    });
+                wheel.Loaded += (_, _) => dispatcher.BeginInvoke(() => {
+                    try {
+                        Require(!wheel.ShowActivated && wheel.DragMode && DragTestForeground() == foreground, "Drag wheel stole focus.");
+                        Require(wheel.PageCount == 4 && wheel.Hit(new Point(220,220)) == null, "Wheel sets or gap hit testing failed.");
+                        wheel.AcceptDrop(new DataObject(DataFormats.Text, "not a file"), new Point(220,67));
+                        Require(wheel.IsVisible && !wrongCommit, "Text drop converted a file.");
+                        wheel.NextPage(); Require(wheel.VisibleOptions.SequenceEqual(new[]{"avif"}), "Remaining format page missing.");
+                        wheel.NextPage(); Require(wheel.VisibleOptions.Count == 6 && wheel.ChoicesDoNotOverlap(), "Tool page invalid.");
+                        wheel.Select("image.crop"); wheel.NextPage(); wheel.Commit();
+                        Require(wheel.IsVisible && wheel.VisibleOptions.Single() == "image.redact", "Tool selection survived page change.");
+                        wheel.AcceptDrop(new DataObject(DataFormats.FileDrop, dropped), new Point(220,67));
+                    } catch(Exception ex) { completion.TrySetException(ex); wheel.Close(); source.Close(); dispatcher.BeginInvokeShutdown(DispatcherPriority.Background); }
+                });
+                wheel.Show(); Dispatcher.Run();
+            } catch(Exception ex) { completion.TrySetException(ex); }
+        });
+        thread.IsBackground = true; thread.SetApartmentState(ApartmentState.STA); thread.Start();
+        return completion.Task.WaitAsync(TimeSpan.FromSeconds(15));
+    }
+    [System.Runtime.InteropServices.DllImport("user32.dll", EntryPoint="GetForegroundWindow")] private static extern IntPtr DragTestForeground();
     private static async Task SecurityChecksAsync(ConversionService service, string input, string directory, List<string> checks)
     {
         async Task Reject(string file, string format, string label)

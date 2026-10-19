@@ -1,0 +1,10 @@
+{
+  "architecture": "ARM64",
+  "host": "Windows 11 ARM64 Parallels VM",
+  "regressionExitCode": 0,
+  "regressionChecks": 47,
+  "fullFeatureSuiteForThisBuild": false,
+  "physicalExplorerDragManuallyVerified": false,
+  "wheelCoverage": "Native WPF nonactivation, pages, dropped payload/geometry, tools and Shift recognizer; keyboard/mouse end-to-end Explorer interaction not manually verified",
+  "uiLimit": "Computer-use VM surface unavailable for manual held-drag plus Shift verification"
+}

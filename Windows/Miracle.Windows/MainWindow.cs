@@ -88,9 +88,10 @@ public sealed class MainWindow : Window
         var progress = new StackPanel(); progress.Children.Add(status); var jobs = new WrapPanel { Margin = new Thickness(0, 14, 0, 0) };
         cancel = Theme.Button("Cancel", () => cancellation?.Cancel()); cancel.IsEnabled = false; reveal = Theme.Button("Show result  ↗", Reveal); reveal.IsEnabled = false; jobs.Children.Add(cancel); jobs.Children.Add(reveal); progress.Children.Add(jobs); right.Children.Add(Theme.Card(progress, Theme.Acid));
         var settings = new StackPanel(); settings.Children.Add(engineStatus); engineControls.Margin = new Thickness(0, 10, 0, 0); AddButton(engineControls, "Locate ffmpeg.exe", ChooseFFmpeg, Theme.Panel, Theme.White); AddButton(engineControls, "Locate LibreOffice", ChooseOffice, Theme.Panel, Theme.White); AddButton(engineControls, "Check engines", async () => await DetectAsync(), Theme.Panel, Theme.White); settings.Children.Add(engineControls);
-        var shiftToggle = new CheckBox { Content = "Optional: Shift-tap wheel in File Explorer", Foreground = Theme.White, Margin = new Thickness(0, 6, 0, 12), FontSize = 12 };
-        shiftToggle.Checked += (_, _) => { try { shiftHook ??= new ExplorerShiftHook(Dispatcher, ShowWheel); shiftHook.Enabled = true; } catch (Exception ex) { status.Text = "Explorer shortcut unavailable: " + ex.Message; shiftToggle.IsChecked = false; } };
-        shiftToggle.Unchecked += (_, _) => { if (shiftHook != null) shiftHook.Enabled = false; }; settings.Children.Add(shiftToggle);
+        var shiftToggle = new CheckBox { Content = "Explorer: drag + Shift · Shift again for next set", Foreground = Theme.White, Margin = new Thickness(0, 6, 0, 12), FontSize = 12 };
+        shiftToggle.Checked += (_, _) => { try { shiftHook ??= new ExplorerShiftHook(Dispatcher, (input, drag) => ShowWheel(input, drag), CycleWheel, () => wheel?.Close()); shiftHook.Enabled = true; } catch (Exception ex) { status.Text = "Explorer shortcut unavailable: " + ex.Message; shiftToggle.IsChecked = false; } };
+        shiftToggle.Unchecked += (_, _) => { if (shiftHook != null) shiftHook.Enabled = false; wheel?.Close(); }; settings.Children.Add(shiftToggle);
+        if (!testMode) shiftToggle.IsChecked = true;
         settings.Children.Add(Theme.Text("Images, PDFs, documents, archives & subtitles built in.\nMedia uses FFmpeg; Office files use LibreOffice.\nClosing keeps Miracle in the tray. Use its menu to quit.", 11, Theme.Muted)); right.Children.Add(settings);
         if (!testMode)
         {
@@ -179,14 +180,21 @@ public sealed class MainWindow : Window
         convertButton.Content = files.Length > 1 ? "Convert " + files.Length + " files  ↗" : "Convert file  ↗"; SetControls();
     }
     internal void SelectFormat(string format) { if (Busy || !service.CommonOutputs(files).Contains(format)) return; selectedFormat = format; RefreshFormats(); }
-    private void ShowWheel(string[] input)
+    private bool CycleWheel() { if (Busy || quitting || wheel?.IsVisible != true) return false; wheel.NextPage(); return true; }
+    private void ShowWheel(string[] input, bool dragMode = false)
     {
         if (Busy || quitting) return;
         SetFiles(input);
         var options = service.CommonOutputs(files);
-        if (options.Count == 0) { ShowMain(); status.Text = "No shared conversion for this selection. Choose a supported file or configure FFmpeg."; return; }
+        var availableTools = files.Length == 0 ? Array.Empty<FileTool>() : FileTools.For(files[0]).Where(t => files.All(f => FileTools.For(f).Any(other => other.Id == t.Id))).ToArray();
+        if (options.Count == 0 && availableTools.Length == 0) { ShowMain(); status.Text = "No shared conversion for this selection. Choose a supported file or configure FFmpeg."; return; }
         wheel?.Close();
-        wheel = new WheelWindow(files, options, BeginConversion); wheel.Show();
+        wheel = new WheelWindow(files, options, BeginConversion, dragMode, availableTools.Select(t => t.Id).ToArray(), (dropped, id) => {
+            if (Busy || quitting) return; SetFiles(dropped);
+            var tool = files.Length == 0 ? null : FileTools.For(files[0]).FirstOrDefault(t => t.Id == id && files.All(f => FileTools.For(f).Any(other => other.Id == id)));
+            if (tool != null) { ShowMain(); ShowTool(tool); }
+        });
+        wheel.Show();
     }
     private async void BeginConversion(string[] input, string format)
     {
