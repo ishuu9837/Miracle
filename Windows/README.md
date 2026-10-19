@@ -1,53 +1,57 @@
-# Miracle for Windows — 0.2 preview
+# Miracle for Windows — 0.3 preview
 
-Native C# / WPF port, targeting .NET 10 on Windows 11. This is a separate early implementation: the Mac's full conversion catalog and file actions have not yet been ported.
+Native C# / WPF application for Windows 11, with colorful primary format buttons, an optional conversion wheel and an animated intro using the app logo. The [feature table](FEATURES.md) describes implemented conversions, all 28 category-specific tool entries, and fidelity limits. Release evidence belongs in `Verification/`; implementation alone is not a test pass.
 
-## Run the portable build
+## Run
 
-Extract the **entire** ARM64 ZIP in Windows and open `Miracle.exe`. It includes the .NET runtime, so no SDK or runtime installation is needed to run it. Apple Silicon Macs running Windows 11 in Parallels use the **win-arm64** build. Do not copy only the EXE: its companion files are required. This preview is unsigned.
+Extract the **entire** portable ZIP to a local Windows folder and open `Miracle.exe`. The .NET runtime is included. Apple Silicon Macs running Windows 11 in Parallels use **win-arm64**. A Windows x64 build needs x64 Office engines and its own device verification.
 
-The primary workflow is **01 Add files → 02 pick a colorful output tile → Convert**. **03 Not sure? Use the wheel** is an optional alternative. The halftone logo theme includes an animated logo intro, with Skip and system reduced-animation support. Closing the main window keeps Miracle in the tray. Use the tray menu to quit. Optional Shift-tap integration can be enabled in the main window; it reads the selection from a foreground File Explorer window. Desktop selections and automatic login startup are not implemented. Preferences, including the optional shortcut and a manually selected engine path, are session-only for now.
+Choose files → select a colorful output tile → **Convert**. For crop, trim, metadata, redaction and other operations, choose a file-tool button and enter settings before saving a new result. **Not sure? Use the wheel** remains optional. Outputs are saved beside originals unless you select another folder. Multi-page PDF exports produce one file per page. Use **Show result** to locate the output.
 
-## Current conversion scope
+Conversions run locally: no account, upload or cloud conversion service. Closing the main window keeps Miracle in its tray; use the tray menu to quit. Explorer Shift-tap is opt-in, session-only, and reads selected files only while File Explorer is foreground. Desktop selection, automatic login startup and the Mac's six file actions are not implemented in this Windows preview.
 
-- Native inputs: JPG/JPEG, PNG, BMP, TIFF/TIF, GIF.
-- Native image outputs: JPG, PNG, BMP, TIFF. Non-TIFF output uses the first frame; TIFF preserves the decoded image frames. This is a basic raster export, not an animated GIF conversion or metadata preservation tool.
-- SRT ↔ VTT, and subtitle → TXT. Basic cue timing and text; advanced WebVTT styling/regions are not preserved.
-- Optional FFmpeg: audio MP3, M4A, WAV, FLAC, OGG, Opus, AIFF; WMA input; video MP4, MOV, MKV, WebM, GIF export and MP3 extraction. AVI and WMV input. WebP image routes are also available with FFmpeg.
-- Only output codecs detected in the selected FFmpeg build are offered. Input decoding still depends on that build and the particular file. An audio extraction from a silent video fails with an engine error.
-- Office/PDF conversion, HEIC/AVIF, archives, and the six file actions are **not yet ported**. LibreOffice is not required for this preview.
+## Engines
 
-Original files are preserved. Outputs use collision-safe `-converted` names. Failed/cancelled unfinished outputs are removed; completed batch outputs are kept. Image jobs can finish their active codec call before cancellation takes effect. FFmpeg jobs have a 30-minute timeout and process-tree cancellation.
+The application includes local image, PDFium PDF rendering, document, archive and subtitle libraries. HEIC export additionally uses the local `Engines/Heif/bin/heif-enc.exe` engine. FFmpeg/ffprobe handle audio/video. LibreOffice handles legacy documents, slides and sheets. Full Windows packages must include these engines in the layout below, with their notices:
 
-## FFmpeg setup (optional)
-
-Obtain a trusted Windows FFmpeg build through the links on https://ffmpeg.org/download.html. Select **Locate ffmpeg.exe** in Miracle, add it to PATH before launching, or put it under `Engines/ffmpeg.exe` beside `Miracle.exe`. Do not use the Mac FFmpeg binary. Review the engine distributor's licenses before redistributing an engine with Miracle. No external engine is included or downloaded automatically in this preview.
-
-## Build
-
-Install the **.NET 10 SDK for Windows ARM64** in a Windows 11 ARM VM, or the x64 SDK on an Intel/AMD Windows PC. Visual Studio Community with **.NET desktop development** is optional; the SDK CLI is sufficient. VS Code alone and extensions named “dotnet” do not install the SDK. Confirm with `dotnet --version` in a new Windows terminal.
-
-```powershell
-dotnet build Windows/Miracle.Windows/Miracle.Windows.csproj -c Release
-powershell -File Windows/Scripts/publish.ps1 -Runtime win-arm64
+```
+Miracle.exe
+Engines/
+  Media/ffmpeg.exe
+  Media/ffprobe.exe
+  Heif/bin/heif-enc.exe
+  Heif/bin/*.dll
+  LibreOffice/program/soffice.com
+  LibreOffice/... (complete administrative image)
 ```
 
-For x64, use `-Runtime win-x64`. ARM64 has been tested in the development VM; x64 still needs device testing. macOS can cross-compile with `EnableWindowsTargeting`; the WPF application itself runs only on Windows.
+If they are elsewhere, use **Locate ffmpeg.exe** or **Locate LibreOffice**. HEIC uses the bundled path. Office conversion options appear only when LibreOffice is located; media options depend on detected FFmpeg encoders. The official **Microsoft Visual C++ ARM64 Redistributable** is required by native engines. Installing that prerequisite may require administrator approval; Miracle itself requests standard-user privileges.
 
-## Verification
+Build-time preparation downloads official engine packages with SHA-256 checks. It is separate from the application; the application does not download engines. See [THIRD_PARTY.md](THIRD_PARTY.md) for licensing and source information.
 
-Run the real Windows conversion checks against the portable build:
+## Build and package
+
+Use the .NET 10 SDK. Visual Studio with the .NET desktop workload is optional. VS Code extensions alone do not install the SDK.
 
 ```powershell
-$p = Start-Process .\Miracle.exe -ArgumentList '--self-test', 'C:\Users\Public\MiracleTest' -Wait -PassThru
-Get-Content C:\Users\Public\MiracleTest\report.json
-if ($p.ExitCode -ne 0) { throw 'Self-test failed' }
+dotnet build Windows/Miracle.Windows/Miracle.Windows.csproj -c Release -r win-arm64 -p:TreatWarningsAsErrors=true
+# Run in Windows to prepare a full ARM64 engine folder:
+powershell -File Windows/Scripts/prepare-engines.ps1 -Output C:\MiracleEngines
+powershell -File Windows/Scripts/publish.ps1 -Runtime win-arm64 -Engines C:\MiracleEngines
 ```
 
-Use a dedicated test directory. The report checks native image decoding/encoding, subtitle round-trips, output collisions, cancellation, original preservation, mixed selections, and temporary output cleanup. FFmpeg and Explorer integration require separate manual testing on Windows.
+Use a PowerShell execution policy permitted by your organization's development environment; no persistent execution-policy change is required by the app. macOS can cross-compile the app, but the application and native Windows tests run on Windows.
 
-## Reliability and security checks
+## Verify before distribution
 
-This build treats compiler warnings as errors and includes executable Windows checks for the primary UI workflow, wheel commitment/close events, malformed and empty inputs, output path validation, command argument isolation, child-process error handling/cancellation, bounded stdout/stderr drains, original preservation and atomic output naming. Subtitle input is limited to 8 MB; native image input to 256 MB, 100 frames and an 80-megapixel decoded budget. FFmpeg input protocols are restricted to `file,pipe`. Subtitle markup stripping uses a non-backtracking matcher with a timeout. The application requests standard-user privileges (`asInvoker`), not elevation.
+```powershell
+$p = Start-Process .\Miracle.exe -ArgumentList '--feature-test', 'C:\Users\Public\MiracleFeatureTest' -Wait -PassThru
+Get-Content C:\Users\Public\MiracleFeatureTest\feature-report.json
+if ($p.ExitCode -ne 0) { throw 'Feature tests failed' }
+$p = Start-Process .\Miracle.exe -ArgumentList '--self-test', 'C:\Users\Public\MiracleRegressionTest' -Wait -PassThru
+if ($p.ExitCode -ne 0) { throw 'Regression tests failed' }
+```
 
-See [SECURITY.md](SECURITY.md) for the verification scope. Engine and Windows codec security still depend on their installed versions.
+Use a fresh feature-test directory. The suite generates fixtures and actually converts each offered input/output pair, reopens outputs, and runs all file-tool entries. It checks specific page, pixel, timing and stream properties; it does not prove compatibility with every real-world document. The regression suite covers UI selection, intro, wheel close, original preservation and failure/cancellation handling. Final security and distribution checks follow feature verification; see [SECURITY.md](SECURITY.md).
+
+This preview is unsigned. A trusted signing certificate and separate clean-machine SmartScreen / Smart App Control verification are needed for a signed public release. No verified publisher is claimed.

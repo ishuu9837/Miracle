@@ -1,0 +1,12 @@
+{
+  "filename": "Miracle-Windows-ARM64-v0.3-preview.zip",
+  "bytes": 710181298,
+  "sha256": "8f2cdb3e00b838e1281a902527e4c8efccba4c06874e12baa657900a2548236a",
+  "files": 20124,
+  "zipIntegrity": "passed",
+  "regressionExitCode": 0,
+  "fullFeatureExitCode": 0,
+  "officeSubsetExitCode": 0,
+  "appBuild": "Release, win-arm64, self-contained, warnings as errors",
+  "sourceNotes": "The full 303-check pass preceded isolated Office temporary-path and wheel corrections. Targeted Office (38), DOCX page export (2), GIF video tools (9), and final ordinary-user regression (46) checks passed separately. These overlapping checks are not unique pair counts."
+}

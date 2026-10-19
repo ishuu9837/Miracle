@@ -1,0 +1,56 @@
+Resolved managed and native NuGet components. Individual license terms apply.
+
+bblanchon.PDFium.Win32 157.0.8100
+Authors: Benoît Blanchon
+License: Apache-2.0
+Source: https://github.com/bblanchon/pdfium-binaries.git
+
+DocumentFormat.OpenXml 3.5.1
+Authors: Microsoft
+License: MIT
+Source: https://github.com/dotnet/Open-XML-SDK
+
+DocumentFormat.OpenXml.Framework 3.5.1
+Authors: Microsoft
+License: MIT
+Source: https://github.com/dotnet/Open-XML-SDK
+
+Magick.NET-Q8-arm64 15.0.0
+Authors: Dirk Lemstra
+License: Apache-2.0
+Source: https://github.com/dlemstra/Magick.NET
+
+Magick.NET.Core 15.0.0
+Authors: Dirk Lemstra
+License: Apache-2.0
+Source: https://github.com/dlemstra/Magick.NET
+
+Microsoft.Extensions.DependencyInjection.Abstractions 8.0.2
+Authors: Microsoft
+License: MIT
+Source: https://github.com/dotnet/runtime
+
+Microsoft.Extensions.Logging.Abstractions 8.0.3
+Authors: Microsoft
+License: MIT
+Source: https://github.com/dotnet/runtime
+
+PdfPig 0.1.16
+Authors: UglyToad
+License: Apache-2.0
+Source: https://github.com/UglyToad/PdfPig
+
+PDFsharp-WPF 6.2.4
+Authors: PDFsharp Team
+License: MIT
+Source: https://github.com/empira/PDFsharp
+
+SharpCompress 1.0.0
+Authors: Adam Hathcock
+License: MIT
+Source: https://github.com/adamhathcock/sharpcompress
+
+System.IO.Packaging 10.0.2
+Authors: Microsoft
+License: MIT
+Source: https://github.com/dotnet/dotnet

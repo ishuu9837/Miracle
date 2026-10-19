@@ -1,0 +1,1219 @@
+{
+  "complete": true,
+  "passed": true,
+  "failures": 0,
+  "checks": [
+    {
+      "name": "Create image fixtures and all image encoders",
+      "status": "PASS"
+    },
+    {
+      "name": "Create two-page PDF, DOCX, EPUB and text fixtures",
+      "status": "PASS"
+    },
+    {
+      "name": "Create Office input fixtures through local LibreOffice",
+      "status": "PASS"
+    },
+    {
+      "name": "Generate audio and video fixtures with bundled FFmpeg",
+      "status": "PASS"
+    },
+    {
+      "name": "Create ZIP, TAR and GZIP fixtures",
+      "status": "PASS"
+    },
+    {
+      "name": "image.jpg \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.jpg \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.jpg \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.jpg \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.jpg \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.jpg \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.jpg \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.png \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.png \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.png \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.png \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.png \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.png \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.png \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.webp \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.webp \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.webp \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.webp \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.webp \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.webp \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.webp \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.heic \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.heic \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.heic \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.heic \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.heic \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.heic \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.heic \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.tiff \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.tiff \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.tiff \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.tiff \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.tiff \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.tiff \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.tiff \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.avif \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.avif \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.avif \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.avif \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.avif \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.avif \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.avif \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.bmp \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.bmp \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.bmp \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.bmp \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.bmp \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.bmp \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.bmp \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 mp4",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 mov",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 mkv",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 webm",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 avi",
+      "status": "PASS"
+    },
+    {
+      "name": "image.gif \u2192 wmv",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "image.svg \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "document.txt \u2192 docx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.txt \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "document.txt \u2192 md",
+      "status": "PASS"
+    },
+    {
+      "name": "document.txt \u2192 html",
+      "status": "PASS"
+    },
+    {
+      "name": "document.txt \u2192 epub",
+      "status": "PASS"
+    },
+    {
+      "name": "document.txt \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.txt \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "document.md \u2192 docx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.md \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "document.md \u2192 txt",
+      "status": "PASS"
+    },
+    {
+      "name": "document.md \u2192 html",
+      "status": "PASS"
+    },
+    {
+      "name": "document.md \u2192 epub",
+      "status": "PASS"
+    },
+    {
+      "name": "document.md \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.md \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "document.html \u2192 docx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.html \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "document.html \u2192 txt",
+      "status": "PASS"
+    },
+    {
+      "name": "document.html \u2192 md",
+      "status": "PASS"
+    },
+    {
+      "name": "document.html \u2192 epub",
+      "status": "PASS"
+    },
+    {
+      "name": "document.html \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.html \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "document.docx \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "document.docx \u2192 txt",
+      "status": "PASS"
+    },
+    {
+      "name": "document.docx \u2192 md",
+      "status": "PASS"
+    },
+    {
+      "name": "document.docx \u2192 html",
+      "status": "PASS"
+    },
+    {
+      "name": "document.docx \u2192 epub",
+      "status": "PASS"
+    },
+    {
+      "name": "document.docx \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.docx \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "document.epub \u2192 docx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.epub \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "document.epub \u2192 txt",
+      "status": "PASS"
+    },
+    {
+      "name": "document.epub \u2192 md",
+      "status": "PASS"
+    },
+    {
+      "name": "document.epub \u2192 html",
+      "status": "PASS"
+    },
+    {
+      "name": "document.epub \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.epub \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 docx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 pptx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 xlsx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 epub",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 txt",
+      "status": "PASS"
+    },
+    {
+      "name": "document.pdf \u2192 md",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xlsx \u2192 ods",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xlsx \u2192 csv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xlsx \u2192 tsv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xlsx \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.ods \u2192 xlsx",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.ods \u2192 csv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.ods \u2192 tsv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.ods \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.csv \u2192 xlsx",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.csv \u2192 ods",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.csv \u2192 tsv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.csv \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.tsv \u2192 xlsx",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.tsv \u2192 ods",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.tsv \u2192 csv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.tsv \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "slides.pptx \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "slides.pptx \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "slides.pptx \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 docx",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 txt",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 md",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 html",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 epub",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "document.rtf \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xls \u2192 xlsx",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xls \u2192 ods",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xls \u2192 csv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xls \u2192 tsv",
+      "status": "PASS"
+    },
+    {
+      "name": "sheet.xls \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "slides.ppt \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "slides.ppt \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "slides.ppt \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "tone.wav \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone.wav \u2192 m4a",
+      "status": "PASS"
+    },
+    {
+      "name": "tone.wav \u2192 flac",
+      "status": "PASS"
+    },
+    {
+      "name": "tone.wav \u2192 ogg",
+      "status": "PASS"
+    },
+    {
+      "name": "tone.wav \u2192 opus",
+      "status": "PASS"
+    },
+    {
+      "name": "tone.wav \u2192 aiff",
+      "status": "PASS"
+    },
+    {
+      "name": "tone.wav \u2192 wma",
+      "status": "PASS"
+    },
+    {
+      "name": "clip.mp4 \u2192 mov",
+      "status": "PASS"
+    },
+    {
+      "name": "clip.mp4 \u2192 mkv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip.mp4 \u2192 webm",
+      "status": "PASS"
+    },
+    {
+      "name": "clip.mp4 \u2192 avi",
+      "status": "PASS"
+    },
+    {
+      "name": "clip.mp4 \u2192 wmv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip.mp4 \u2192 gif",
+      "status": "PASS"
+    },
+    {
+      "name": "clip.mp4 \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.mp3 \u2192 m4a",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.mp3 \u2192 wav",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.mp3 \u2192 flac",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.mp3 \u2192 ogg",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.mp3 \u2192 opus",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.mp3 \u2192 aiff",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.mp3 \u2192 wma",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.m4a \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.m4a \u2192 wav",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.m4a \u2192 flac",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.m4a \u2192 ogg",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.m4a \u2192 opus",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.m4a \u2192 aiff",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.m4a \u2192 wma",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.flac \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.flac \u2192 m4a",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.flac \u2192 wav",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.flac \u2192 ogg",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.flac \u2192 opus",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.flac \u2192 aiff",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.flac \u2192 wma",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.ogg \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.ogg \u2192 m4a",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.ogg \u2192 wav",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.ogg \u2192 flac",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.ogg \u2192 opus",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.ogg \u2192 aiff",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.ogg \u2192 wma",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.opus \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.opus \u2192 m4a",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.opus \u2192 wav",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.opus \u2192 flac",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.opus \u2192 ogg",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.opus \u2192 aiff",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.opus \u2192 wma",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.aiff \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.aiff \u2192 m4a",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.aiff \u2192 wav",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.aiff \u2192 flac",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.aiff \u2192 ogg",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.aiff \u2192 opus",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.aiff \u2192 wma",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.wma \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.wma \u2192 m4a",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.wma \u2192 wav",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.wma \u2192 flac",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.wma \u2192 ogg",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.wma \u2192 opus",
+      "status": "PASS"
+    },
+    {
+      "name": "tone-converted.wma \u2192 aiff",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mov \u2192 mp4",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mov \u2192 mkv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mov \u2192 webm",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mov \u2192 avi",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mov \u2192 wmv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mov \u2192 gif",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mov \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mkv \u2192 mp4",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mkv \u2192 mov",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mkv \u2192 webm",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mkv \u2192 avi",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mkv \u2192 wmv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mkv \u2192 gif",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.mkv \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.webm \u2192 mp4",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.webm \u2192 mov",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.webm \u2192 mkv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.webm \u2192 avi",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.webm \u2192 wmv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.webm \u2192 gif",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.webm \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.avi \u2192 mp4",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.avi \u2192 mov",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.avi \u2192 mkv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.avi \u2192 webm",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.avi \u2192 wmv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.avi \u2192 gif",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.avi \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.wmv \u2192 mp4",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.wmv \u2192 mov",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.wmv \u2192 mkv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.wmv \u2192 webm",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.wmv \u2192 avi",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.wmv \u2192 gif",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.wmv \u2192 mp3",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 jpg",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 png",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 webp",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 heic",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 tiff",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 avif",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 bmp",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 mp4",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 mov",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 mkv",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 webm",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 avi",
+      "status": "PASS"
+    },
+    {
+      "name": "clip-converted.gif \u2192 wmv",
+      "status": "PASS"
+    },
+    {
+      "name": "archive.rar \u2192 zip",
+      "status": "PASS"
+    },
+    {
+      "name": "archive.rar \u2192 tar",
+      "status": "PASS"
+    },
+    {
+      "name": "archive.rar \u2192 gzip",
+      "status": "PASS"
+    },
+    {
+      "name": "archive.zip \u2192 tar",
+      "status": "PASS"
+    },
+    {
+      "name": "archive.zip \u2192 gzip",
+      "status": "PASS"
+    },
+    {
+      "name": "archive-converted.tar \u2192 zip",
+      "status": "PASS"
+    },
+    {
+      "name": "archive-converted.tar \u2192 gzip",
+      "status": "PASS"
+    },
+    {
+      "name": "archive-converted.tar.gz \u2192 zip",
+      "status": "PASS"
+    },
+    {
+      "name": "archive-converted.tar.gz \u2192 tar",
+      "status": "PASS"
+    },
+    {
+      "name": "image.compress",
+      "status": "PASS"
+    },
+    {
+      "name": "image.metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "image.edit",
+      "status": "PASS"
+    },
+    {
+      "name": "image.annotate",
+      "status": "PASS"
+    },
+    {
+      "name": "image.background",
+      "status": "PASS"
+    },
+    {
+      "name": "image.crop",
+      "status": "PASS"
+    },
+    {
+      "name": "image.redact",
+      "status": "PASS"
+    },
+    {
+      "name": "video.compress",
+      "status": "PASS"
+    },
+    {
+      "name": "video.metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "video.mute",
+      "status": "PASS"
+    },
+    {
+      "name": "video.trim",
+      "status": "PASS"
+    },
+    {
+      "name": "video.crop",
+      "status": "PASS"
+    },
+    {
+      "name": "video.speed",
+      "status": "PASS"
+    },
+    {
+      "name": "video.snapshot",
+      "status": "PASS"
+    },
+    {
+      "name": "video.split",
+      "status": "PASS"
+    },
+    {
+      "name": "video.redact",
+      "status": "PASS"
+    },
+    {
+      "name": "audio.compress",
+      "status": "PASS"
+    },
+    {
+      "name": "audio.metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "audio.normalize",
+      "status": "PASS"
+    },
+    {
+      "name": "audio.visualize",
+      "status": "PASS"
+    },
+    {
+      "name": "audio.trim",
+      "status": "PASS"
+    },
+    {
+      "name": "audio.channels",
+      "status": "PASS"
+    },
+    {
+      "name": "audio.bleep",
+      "status": "PASS"
+    },
+    {
+      "name": "pdf.compress",
+      "status": "PASS"
+    },
+    {
+      "name": "pdf.metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "pdf.split",
+      "status": "PASS"
+    },
+    {
+      "name": "pdf.organize",
+      "status": "PASS"
+    },
+    {
+      "name": "archive.extract",
+      "status": "PASS"
+    }
+  ]
+}

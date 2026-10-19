@@ -1,0 +1,3 @@
+﻿Scan starting...
+Scan finished.
+Scanning C:\Users\Public\MiracleFinal03 found no threats.

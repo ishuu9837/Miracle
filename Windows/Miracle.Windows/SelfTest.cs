@@ -53,8 +53,11 @@ internal static class SelfTest
             try { await service.ConvertAsync(input, "jpg", directory, cancelled.Token); throw new Exception("Cancellation ignored."); } catch (OperationCanceledException) { checks.Add("Cancellation"); }
             Require(!Directory.EnumerateFiles(directory, ".miracle-*").Any(), "Temporary output leaked."); checks.Add("Temporary output cleanup");
             Require(service.CommonOutputs(new[] { input, srt }).Count == 0, "Mixed selection accepted invalid output."); checks.Add("Mixed selection validation");
-            await CheckWheelCloseAsync(input); checks.Add("Wheel selection/commit/deactivate regression");
+            string svg=Path.Combine(directory,"shape.svg");await File.WriteAllTextAsync(svg,"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"96\" height=\"64\"><rect width=\"96\" height=\"64\" fill=\"coral\"/></svg>");
+            foreach(string format in service.Outputs(svg)){await service.ConvertAsync(svg,format,directory,CancellationToken.None);checks.Add("Restricted SVG → "+format);}
+            await CheckWheelCloseAsync(input); checks.Add("14-option wheel layout/selection/commit/deactivate regression");
             await SecurityChecksAsync(service, input, directory, checks);
+            await FeatureSafety.RunAsync(directory,checks);
             await CheckPrimaryFlowAsync(input); checks.Add("Primary conversion, file reset, animated intro completion/skip and window close");
             await File.WriteAllTextAsync(report, JsonSerializer.Serialize(new { passed = true, checks }, new JsonSerializerOptions { WriteIndented = true }));
             return 0;
@@ -70,8 +73,8 @@ internal static class SelfTest
             {
                 var dispatcher = Dispatcher.CurrentDispatcher;
                 bool committed = false;
-                var window = new WheelWindow(new[] { input }, new[] { "jpg", "bmp" }, (selectedFiles, format) => { Require(format == "bmp" && selectedFiles[0] == input, "Wheel committed wrong format or files."); committed = true; });
-                window.Loaded += (_, _) => dispatcher.BeginInvoke(() => { window.Select("bmp"); window.Commit(); Require(committed, "Wheel did not commit."); completion.TrySetResult(); dispatcher.BeginInvokeShutdown(DispatcherPriority.Background); });
+                var window = new WheelWindow(new[] { input }, new[] { "jpg", "png", "webp", "heic", "tiff", "avif", "pdf", "mp4", "mov", "mkv", "webm", "avi", "wmv", "bmp" }, (selectedFiles, format) => { Require(format == "bmp" && selectedFiles[0] == input, "Wheel committed wrong format or files."); committed = true; });
+                window.Loaded += (_, _) => dispatcher.BeginInvoke(() => { Require(window.ChoicesDoNotOverlap(), "Wheel options overlap."); window.Select("bmp"); window.Commit(); Require(committed, "Wheel did not commit."); completion.TrySetResult(); dispatcher.BeginInvokeShutdown(DispatcherPriority.Background); });
                 window.Show(); Dispatcher.Run();
             }
             catch (Exception ex) { completion.TrySetException(ex); }
@@ -85,7 +88,7 @@ internal static class SelfTest
         {
             bool rejected = false;
             try { await service.ConvertAsync(file, format, directory, CancellationToken.None); }
-            catch (Exception ex) when (ex is IOException or FileFormatException or InvalidDataException or InvalidOperationException or NotSupportedException or ArgumentException) { rejected = true; }
+            catch (Exception ex) when (ex is ImageMagick.MagickException or IOException or FileFormatException or InvalidDataException or InvalidOperationException or NotSupportedException or ArgumentException) { rejected = true; }
             Require(rejected, label + " was accepted.");
             Require(!Directory.EnumerateFiles(directory, ".miracle-*").Any(), label + " leaked temporary output."); checks.Add(label);
         }

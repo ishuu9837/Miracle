@@ -1,0 +1,1 @@
+`archive-stored.rar` is a generated, uncompressed RAR4 fixture containing only `folder/hello.txt` with the text `Miracle archive content`. It contains no executable. Created for Miracle's tests; MIT licensed with this repository. The test suite also generates its ZIP/TAR/GZIP, media, image and Office fixtures locally.

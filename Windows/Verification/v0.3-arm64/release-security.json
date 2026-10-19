@@ -1,0 +1,37 @@
+﻿{
+    "collectedUtc":  "2026-10-19T00:33:32.2159358Z",
+    "environment":  "Existing development VM; not a clean-machine result",
+    "publicScannerUpload":  false,
+    "os":  {
+               "caption":  "Microsoft Windows 11 Pro",
+               "architecture":  "ARM 64-bit Processor",
+               "build":  "26300",
+               "version":  "10.0.26300"
+           },
+    "authenticode":  {
+                         "status":  "NotSigned",
+                         "publisher":  null
+                     },
+    "sha256":  "8FF9487513C5BE83EE715F22A19203554BAA3E111A039989F0E09A15ABC43264",
+    "manifest":  "Verify embedded RT_MANIFEST execution level using the binary resource inspection; source manifest alone is insufficient.",
+    "defender":  {
+                     "AntivirusEnabled":  true,
+                     "AMServiceEnabled":  true,
+                     "RealTimeProtectionEnabled":  true,
+                     "AntivirusSignatureVersion":  "1.461.91.0",
+                     "AntivirusSignatureLastUpdated":  "\/Date(1792321624000)\/",
+                     "SmartAppControlState":  "Eval"
+                 },
+    "smartAppControlRegistry":  2,
+    "smartScreen":  "Not yet tested from a public download on a clean machine. No verified publisher can be shown for this unsigned build.",
+    "smartAppControl":  "Configuration read only; this is not an enforced clean-machine compatibility pass.",
+    "defenderScan":  {
+                         "threats":  [
+
+                                     ],
+                         "exitCode":  0,
+                         "startedUtc":  "2026-10-19T00:33:33.5643403Z",
+                         "log":  "defender-scan.txt",
+                         "endedUtc":  "2026-10-19T00:35:05.6240581Z"
+                     }
+}

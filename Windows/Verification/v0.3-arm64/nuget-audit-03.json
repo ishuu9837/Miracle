@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "parameters": "--vulnerable --include-transitive",
+  "sources": [
+    "https://api.nuget.org/v3/index.json"
+  ],
+  "projects": [
+    {
+      "path": "/private/tmp/miracle-website-github/Windows/Miracle.Windows/Miracle.Windows.csproj"
+    }
+  ]
+}

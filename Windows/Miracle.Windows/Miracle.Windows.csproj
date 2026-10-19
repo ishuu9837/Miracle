@@ -11,7 +11,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AssemblyName>Miracle</AssemblyName>
     <RootNamespace>Miracle.Windows</RootNamespace>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Magick.NET-Q8-arm64" Version="15.0.0" Condition="'$(RuntimeIdentifier)' != 'win-x64'" />
+    <PackageReference Include="Magick.NET-Q8-x64" Version="15.0.0" Condition="'$(RuntimeIdentifier)' == 'win-x64'" />
+    <PackageReference Include="PDFsharp-WPF" Version="6.2.4" />
+    <PackageReference Include="bblanchon.PDFium.Win32" Version="157.0.8100" />
+    <PackageReference Include="PdfPig" Version="0.1.16" />
+    <PackageReference Include="SharpCompress" Version="1.0.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
+  </ItemGroup>
+  <ItemGroup><Content Include="..\TestFixtures\archive-stored.rar" Link="TestFixtures\archive-stored.rar" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
   <ItemGroup><Resource Include="Assets\AppIcon.png" /></ItemGroup>
 </Project>

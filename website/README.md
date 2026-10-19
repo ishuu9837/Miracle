@@ -9,7 +9,7 @@ Static HTML, CSS, and browser JavaScript. The app artwork comes from `Resources/
 3. Use framework preset **Other**. The root `vercel.json` sets **Output Directory** to `website` and skips installation and build commands.
 4. Deploy. No environment variables or ChatGPT sign-in are required by the website.
 
-The DMG download links directly to the GitHub release, rather than storing the installer in the website deployment. Version 0.3.0 is an unnotarized test build for Apple Silicon and macOS 13+.
+The Mac DMG and Windows ZIP link directly to their separate GitHub releases. Mac v0.3.0 is an unnotarized test build for Apple Silicon and macOS 13+. Windows v0.3 is an unsigned Windows 11 ARM64 portable preview with bundled offline engines; extract the complete ZIP. Intel/AMD x64 Windows binaries are not released. See the Windows release and feature guide for verification scope, prerequisites and fidelity limits.
 
 ## Local preview
 

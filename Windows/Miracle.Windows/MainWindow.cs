@@ -18,6 +18,7 @@ public sealed class MainWindow : Window
     public static readonly SolidColorBrush Ink = Theme.Ink, Paper = Theme.Paper, Acid = Theme.Acid;
     private readonly ConversionService service = new();
     private readonly WrapPanel formats = new();
+    private readonly WrapPanel tools = new();
     private readonly TextBlock selection = Theme.Text("Drop something good here.", 20, Theme.Ink, true);
     private readonly TextBlock fileDetail = Theme.Text("Images, audio, video or subtitles · files stay on your PC", 12, Brushes.DimGray);
     private readonly TextBlock engineStatus = Theme.Text("Checking engines…", 11, Theme.Muted);
@@ -56,7 +57,7 @@ public sealed class MainWindow : Window
         page.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); page.RowDefinitions.Add(new RowDefinition());
         var top = new DockPanel { LastChildFill = false, Margin = new Thickness(0, 0, 0, 22) }; page.Children.Add(top);
         var brand = new StackPanel { Orientation = Orientation.Horizontal }; brand.Children.Add(new Image { Source = Theme.Logo(), Width = 42, Height = 42, Margin = new Thickness(0, 0, 12, 0) }); brand.Children.Add(Theme.Text("miracle", 28, Theme.White, true)); top.Children.Add(brand);
-        var badge = Theme.Text("WINDOWS  /  PREVIEW 0.2", 10, Theme.Muted, true); badge.VerticalAlignment = VerticalAlignment.Center; DockPanel.SetDock(badge, Dock.Right); top.Children.Add(badge);
+        var badge = Theme.Text("WINDOWS  /  PREVIEW 0.3", 10, Theme.Muted, true); badge.VerticalAlignment = VerticalAlignment.Center; DockPanel.SetDock(badge, Dock.Right); top.Children.Add(badge);
         var body = new Grid(); body.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(225) }); body.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(22) }); body.ColumnDefinitions.Add(new ColumnDefinition()); Grid.SetRow(body, 1); page.Children.Add(body);
         var aside = new StackPanel { Margin = new Thickness(0, 4, 0, 0) }; body.Children.Add(new ScrollViewer { Content = aside, VerticalScrollBarVisibility = ScrollBarVisibility.Auto });
         aside.Children.Add(Theme.Text("SMALL APP.\nBIG SHIFT.", 37, Theme.White, true));
@@ -80,16 +81,17 @@ public sealed class MainWindow : Window
         var convertRow = new WrapPanel();
         convertButton = Theme.Button("Convert file  ↗", () => { if (selectedFormat != null) BeginConversion(files, selectedFormat); }, Theme.Ink, Theme.White); convertButton.IsEnabled = false; convertButton.MinWidth = 185;
         AutomationProperties.SetName(convertButton, "Convert selected files"); convertRow.Children.Add(convertButton); selectedLabel.Margin = new Thickness(0, 10, 0, 8); convertRow.Children.Add(selectedLabel); pick.Children.Add(convertRow); right.Children.Add(Theme.Card(pick));
+        var toolbox = new StackPanel(); toolbox.Children.Add(StepHeading("✳", "Give it a finishing touch.", Theme.Brush("#FF91C8"))); tools.Margin=new Thickness(0,14,0,0);toolbox.Children.Add(tools);right.Children.Add(Theme.Card(toolbox));
         var optional = new StackPanel();
         var wheelButton = Theme.Button("03   Not sure? Use the wheel.  ✦", () => ShowWheel(files), Theme.Brush("#CCB8FF")); wheelButton.FontSize = 18; wheelButton.MinHeight = 58; wheelButton.Margin = new Thickness(0); optional.Children.Add(wheelButton);
         var help = Theme.Text("A colorful detour. Same conversion, your way.", 12, Theme.Muted); help.Margin = new Thickness(0, 12, 0, 0); optional.Children.Add(help); right.Children.Add(Theme.Card(optional, Theme.Panel));
         var progress = new StackPanel(); progress.Children.Add(status); var jobs = new WrapPanel { Margin = new Thickness(0, 14, 0, 0) };
         cancel = Theme.Button("Cancel", () => cancellation?.Cancel()); cancel.IsEnabled = false; reveal = Theme.Button("Show result  ↗", Reveal); reveal.IsEnabled = false; jobs.Children.Add(cancel); jobs.Children.Add(reveal); progress.Children.Add(jobs); right.Children.Add(Theme.Card(progress, Theme.Acid));
-        var settings = new StackPanel(); settings.Children.Add(engineStatus); engineControls.Margin = new Thickness(0, 10, 0, 0); AddButton(engineControls, "Locate ffmpeg.exe", ChooseFFmpeg, Theme.Panel, Theme.White); AddButton(engineControls, "Check engines", async () => await DetectAsync(), Theme.Panel, Theme.White); settings.Children.Add(engineControls);
+        var settings = new StackPanel(); settings.Children.Add(engineStatus); engineControls.Margin = new Thickness(0, 10, 0, 0); AddButton(engineControls, "Locate ffmpeg.exe", ChooseFFmpeg, Theme.Panel, Theme.White); AddButton(engineControls, "Locate LibreOffice", ChooseOffice, Theme.Panel, Theme.White); AddButton(engineControls, "Check engines", async () => await DetectAsync(), Theme.Panel, Theme.White); settings.Children.Add(engineControls);
         var shiftToggle = new CheckBox { Content = "Optional: Shift-tap wheel in File Explorer", Foreground = Theme.White, Margin = new Thickness(0, 6, 0, 12), FontSize = 12 };
         shiftToggle.Checked += (_, _) => { try { shiftHook ??= new ExplorerShiftHook(Dispatcher, ShowWheel); shiftHook.Enabled = true; } catch (Exception ex) { status.Text = "Explorer shortcut unavailable: " + ex.Message; shiftToggle.IsChecked = false; } };
         shiftToggle.Unchecked += (_, _) => { if (shiftHook != null) shiftHook.Enabled = false; }; settings.Children.Add(shiftToggle);
-        settings.Children.Add(Theme.Text("Images & subtitles built in. Media needs FFmpeg.\nClosing keeps Miracle in the tray. Use its menu to quit.", 11, Theme.Muted)); right.Children.Add(settings);
+        settings.Children.Add(Theme.Text("Images, PDFs, documents, archives & subtitles built in.\nMedia uses FFmpeg; Office files use LibreOffice.\nClosing keeps Miracle in the tray. Use its menu to quit.", 11, Theme.Muted)); right.Children.Add(settings);
         if (!testMode)
         {
             tray = new Forms.NotifyIcon { Text = "Miracle for Windows", Icon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.ProcessPath!) ?? System.Drawing.SystemIcons.Application, Visible = true };
@@ -113,7 +115,7 @@ public sealed class MainWindow : Window
         catch (Exception ex) { engineStatus.Text = "Engine check failed: " + ex.Message; }
         finally { detecting = false; RefreshFormats(); SetControls(); }
     }
-    private void SetControls() { fileControls.IsEnabled = !Busy; engineControls.IsEnabled = !Busy; formats.IsEnabled = !Busy; convertButton.IsEnabled = !Busy && selectedFormat != null && files.Length > 0; }
+    private void SetControls() { fileControls.IsEnabled = !Busy; engineControls.IsEnabled = !Busy; formats.IsEnabled = !Busy; tools.IsEnabled = !Busy; convertButton.IsEnabled = !Busy && selectedFormat != null && files.Length > 0; }
     private void ShowMain() { Show(); WindowState = WindowState.Normal; Activate(); }
     private void ChooseFiles()
     {
@@ -133,6 +135,11 @@ public sealed class MainWindow : Window
         var dialog = new OpenFileDialog { Filter = "FFmpeg executable|ffmpeg.exe", Title = "Choose a trusted FFmpeg executable" };
         if (dialog.ShowDialog(this) == true) await DetectAsync(dialog.FileName);
     }
+    private void ChooseOffice()
+    {
+        if(Busy)return;var dialog=new OpenFileDialog{Filter="LibreOffice engine|soffice.com",Title="Locate local LibreOffice program/soffice.com"};
+        if(dialog.ShowDialog(this)==true){EnginePaths.Office=dialog.FileName;RefreshFormats();engineStatus.Text=service.EngineStatus+" · Office ready";}
+    }
     internal void SetFiles(string[] input)
     {
         if (Busy) return;
@@ -149,7 +156,10 @@ public sealed class MainWindow : Window
     }
     private void RefreshFormats()
     {
-        formats.Children.Clear();
+        formats.Children.Clear(); tools.Children.Clear();
+        if(files.Length>0)foreach(var tool in FileTools.For(files[0]).Where(t=>files.All(f=>FileTools.For(f).Any(x=>x.Id==t.Id))))
+            tools.Children.Add(Theme.Button((files.Any(f=>ConversionService.Extension(f)=="gif")?(tool.Id.StartsWith("image.")?"Image · ":tool.Id.StartsWith("video.")?"Video · ":""):"")+tool.Name,()=>ShowTool(tool),Theme.FormatColor(tool.Id)));
+        if(tools.Children.Count==0)tools.Children.Add(Theme.Text("Choose a supported image, video, audio, PDF or archive.",12,Brushes.DimGray));
         var options = service.CommonOutputs(files);
         if (selectedFormat != null && !options.Contains(selectedFormat)) selectedFormat = null;
         foreach (string format in options)
@@ -159,6 +169,13 @@ public sealed class MainWindow : Window
         }
         if (options.Count == 0) formats.Children.Add(Theme.Text(files.Length == 0 ? "Your options appear as soon as you add files." : "No shared output for this selection. Try files of the same kind, or add FFmpeg for media.", 13, Brushes.DimGray));
         selectedLabel.Text = selectedFormat == null ? "Choose a format first" : "→ " + selectedFormat.ToUpperInvariant() + "  /  " + files.Length + " file(s)";
+        if(selectedFormat!=null && files.Length>0)
+        {
+            string kind=ConversionService.Category(files[0]);
+            if(kind=="pdf" && selectedFormat=="pptx")selectedLabel.Text+="\nOne page image per slide";
+            else if(kind=="pdf" && selectedFormat is "docx" or "xlsx" or "epub" or "txt" or "md")selectedLabel.Text+="\nExtracted text · scanned PDFs need OCR";
+            else if(kind=="document" && !(ConversionService.Extension(files[0])=="docx" && selectedFormat is "pdf" or "png" or "jpg" && EnginePaths.Office!=null))selectedLabel.Text+="\nText reflow · complex layout is not preserved";
+        }
         convertButton.Content = files.Length > 1 ? "Convert " + files.Length + " files  ↗" : "Convert file  ↗"; SetControls();
     }
     internal void SelectFormat(string format) { if (Busy || !service.CommonOutputs(files).Contains(format)) return; selectedFormat = format; RefreshFormats(); }
@@ -189,7 +206,8 @@ public sealed class MainWindow : Window
             foreach (string input in batch)
             {
                 status.Text = "Converting " + (complete + 1) + "/" + batch.Length + ": " + Path.GetFileName(input);
-                lastOutput = await service.ConvertAsync(input, format, folder, token);
+                var outputs = await service.ConvertAllAsync(input, format, folder, token);
+                lastOutput = outputs[0];
                 complete++; reveal.IsEnabled = true;
             }
             status.Text = "Done · " + complete + " file(s) saved. Originals preserved.\n" + lastOutput;
@@ -197,9 +215,27 @@ public sealed class MainWindow : Window
         catch (OperationCanceledException) { status.Text = "Cancelled. " + complete + " completed file(s) kept; unfinished output removed."; }
         catch (Exception ex) { status.Text = "Conversion stopped: " + ex.Message + "\n" + complete + " completed file(s) kept."; }
     }
+    private void ShowTool(FileTool tool)
+    {
+        if(Busy||files.Length==0)return;
+        var dialog=new ToolDialog(tool,files[0]){Owner=this};
+        if(dialog.ShowDialog()==true)BeginTool(tool,dialog.Values);
+    }
+    private async void BeginTool(FileTool tool,ToolValues values)
+    {
+        if(Busy)return;cancellation=new CancellationTokenSource();cancel.IsEnabled=true;
+        running=RunToolAsync(tool,values,cancellation.Token);SetControls();
+        try{await running;}finally{running=null;cancellation.Dispose();cancellation=null;cancel.IsEnabled=false;SetControls();}
+    }
+    private async Task RunToolAsync(FileTool tool,ToolValues values,CancellationToken token)
+    {
+        try{status.Text=tool.Name+" · processing locally…";var outputs=await FileTools.ApplyAsync(files.ToArray(),tool,values,outputFolder,token);lastOutput=outputs[0];reveal.IsEnabled=true;status.Text="Done · "+outputs.Count+" result(s) saved.\n"+lastOutput;}
+        catch(OperationCanceledException){status.Text="Cancelled. Unfinished output removed.";}
+        catch(Exception ex){status.Text="Tool stopped: "+ex.Message;}
+    }
     private void Reveal()
     {
-        if (lastOutput == null || !File.Exists(lastOutput)) return;
+        if (lastOutput == null || (!File.Exists(lastOutput) && !Directory.Exists(lastOutput))) return;
         var start = new ProcessStartInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe")) { UseShellExecute = false }; start.ArgumentList.Add("/select,"); start.ArgumentList.Add(lastOutput); Process.Start(start);
     }
     private void OnClosing(object? sender, CancelEventArgs e)

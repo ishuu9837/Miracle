@@ -1,0 +1,10 @@
+{
+  "environment": "Windows 11 ARM64 development VM",
+  "administratorToken": false,
+  "integrityLevel": "Medium",
+  "integritySid": "S-1-16-8192",
+  "regressionProcessExitCode": 0,
+  "regressionChecksPassed": 46,
+  "uacElevationRequestedForConversions": false,
+  "scope": "Observed ordinary-user regression process; separate runtime-prerequisite installation may request UAC."
+}
